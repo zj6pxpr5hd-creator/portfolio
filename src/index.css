@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --canvas: #090c0a;
+  --surface: #101613;
+  --surface-inset: #080c0a;
+  --ink: #e7f5ea;
+  --muted: #a5b5aa;
+  --border: #22382a;
+  --lime: #39ff88;
+  --lime-soft: #9de7b8;
+  --cobalt: #9de7b8;
+  --amber: #f5b942;
+  --status-background: #0f7a42;
+  --status-ink: #d2ffe1;
+  --error: #ffb4ab;
+
+  --surface-dim: #0d110f;
+  --surface-low: #0d1210;
+  --surface-container: #111a15;
+  --surface-high: #17231b;
+  --surface-highest: #1e3023;
+  --surface-tint: #39ff88;
+  --primary: #39ff88;
+  --primary-container: #0f7a42;
+  --secondary: #b6c7ba;
+  --tertiary: #9de7b8;
+  --outline: #6b8f76;
+  --outline-variant: #294333;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --gutter: 1.5rem;
+  --gutter-mobile: 1rem;
+  --margin: 3rem;
+  --margin-mobile: 1.25rem;
+
+  --radius-sm: 0;
+  --radius: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: var(--font-body);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--canvas);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.625;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  border-radius: 0;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ink);
+  font-family: var(--font-heading);
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 4rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 2.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.75rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.75rem;
+}
+
+code,
+pre,
+.mono-label {
+  font-family: var(--font-mono);
+}
+
+.mono-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 0.875rem;
+  text-transform: uppercase;
+}
+
+code {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25rem;
+}
+
+button,
+input,
+textarea,
+select {
+  border: 1px solid var(--border);
+  background: var(--surface-inset);
+  color: var(--ink);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border-color: var(--primary);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--surface-inset);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --gutter: 2rem;
+    --margin: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: var(--gutter-mobile);
+    --margin: var(--margin-mobile);
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}

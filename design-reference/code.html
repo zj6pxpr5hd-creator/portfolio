@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>Systems Crafter — Midnight Systems Architect &amp; CS Undergrad</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; background-color: #0d0e10; color: #e3e2e5; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .pixelated { image-rendering: pixelated; }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "background": "#0d0e10",
+            "surface-dim": "#121315",
+            "surface-container-low": "#16181b",
+            "surface-container": "#1b1d22",
+            "surface-container-high": "#23262d",
+            "surface-container-highest": "#2c3038",
+            "on-surface": "#e4e7ec",
+            "on-surface-variant": "#9ba1ad",
+            "secondary": "#7e8594",
+            "outline": "#232731",
+            "outline-variant": "#1a1d24",
+            "primary": "#34d399",
+            "primary-container": "#064e3b",
+            "amber-accent": "#f59e0b",
+            "accent-crimson": "#ff5358"
+          },
+          fontFamily: {
+            "body-md": ["Space Grotesk", "sans-serif"],
+            "headline-md": ["Space Grotesk", "sans-serif"],
+            "mono-code": ["JetBrains Mono", "monospace"],
+            "mono-label": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+</script>
+</head>
+<body class="bg-[#0d0e10] font-body-md text-[#e4e7ec] antialiased selection:bg-emerald-500/20 selection:text-emerald-300 min-h-screen flex flex-col justify-between">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-[#0d0e10]/90 backdrop-blur-md border-b border-[#1b1e26]"><div class="max-w-[780px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2.5 group" href="#">
+<div class="relative">
+<span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-[#0d0e10]"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-sm font-bold text-on-surface tracking-tight group-hover:text-emerald-400 transition-colors">Systems Crafter</span>
+<span class="text-[10px] font-mono-code text-secondary">CS Undergrad · Building from scratch</span>
+</div>
+</a>
+</div>
+<div class="flex items-center gap-2.5 sm:gap-4 text-xs font-mono-code">
+<span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#161920] border border-[#242935] text-emerald-400 text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Seeking Summer '25 SWE Internship
+      </span>
+<a class="px-3 py-1.5 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold transition-all text-xs flex items-center gap-1 shadow-sm" href="#contact">
+<span>Let's Talk Code</span>
+</a>
+</div>
+</div></header>
+<!-- Main Workspace -->
+<main class="w-full flex-1 flex flex-col items-center py-8 sm:py-12 px-4 sm:px-6">
+<div class="max-w-[780px] w-full flex flex-col gap-10">
+<!-- SECTION 1: DEVELOPER COCKPIT & LATE-NIGHT COMMAND MODULE WITH WEBGL SHADER -->
+<section class="relative overflow-hidden rounded-2xl border border-[#212631] bg-[#121418]/90 p-6 sm:p-7 backdrop-blur-md shadow-2xl">
+<!-- WebGL Shader Background -->
+<!-- STITCH_SHADER_START:ANIMATION_88 class="absolute inset-0 w-full h-full opacity-65 pointer-events-none rounded-lg" -->
+<div class="absolute inset-0 w-full h-full opacity-65 pointer-events-none rounded-lg" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_88" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_88');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+// Simplex-inspired 2D noise helpers
+vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+float snoise(vec2 v) {
+    const vec4 C = vec4(0.211324865405187,
+                        0.366025403784439,
+                       -0.577350269189626,
+                        0.024390243902439);
+    vec2 i  = floor(v + dot(v, C.yy) );
+    vec2 x0 = v -   i + dot(i, C.xx);
+    vec2 i1;
+    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+    vec4 x12 = x0.xyxy + C.xxzz;
+    x12.xy -= i1;
+    i = mod289(i);
+    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
+        + i.x + vec3(0.0, i1.x, 1.0 ));
+    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+    m = m*m ;
+    m = m*m ;
+    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+    vec3 h = abs(x) - 0.5;
+    vec3 ox = floor(x + 0.5);
+    vec3 a0 = x - ox;
+    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+    vec3 g;
+    g.x  = a0.x  * x0.x  + h.x  * x0.y;
+    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+    return 130.0 * dot(m, g);
+}
+
+void main() {
+    vec2 st = gl_FragCoord.xy / u_resolution.xy;
+    vec2 mouse = u_mouse / u_resolution.xy;
+    
+    // Subtle mouse tracking influence
+    float distMouse = length(st - mouse);
+    float mouseGlow = smoothstep(0.4, 0.0, distMouse) * 0.25;
+    
+    // Domain warping
+    float t = u_time * 0.15;
+    vec2 q = vec2(0.0);
+    q.x = snoise(st * 2.4 + vec2(t * 0.3, t * 0.15));
+    q.y = snoise(st * 2.4 + vec2(t * 0.1, -t * 0.2));
+    
+    vec2 r = vec2(0.0);
+    r.x = snoise(st * 3.0 + 1.2 * q + vec2(1.7, 9.2) + 0.2 * t);
+    r.y = snoise(st * 3.0 + 1.2 * q + vec2(8.3, 2.8) - 0.2 * t);
+    
+    float f = snoise(st * 2.6 + r * 1.5);
+    f = (f + 1.0) * 0.5;
+    
+    // Dark gray palette (#0b0d10 -> #12151a)
+    vec3 baseDark = vec3(0.043, 0.051, 0.063);
+    vec3 midDark = vec3(0.070, 0.082, 0.102);
+    
+    // Emerald / Phosphor Green accent palette (#10b981 / #34d399 / #00ff88)
+    vec3 emeraldGlow = vec3(0.063, 0.725, 0.506);
+    vec3 phosphorCore = vec3(0.204, 0.925, 0.600);
+    
+    // Grid coordinate scanlines overlay
+    vec2 gridSt = fract(st * vec2(36.0, 20.0));
+    float gridLine = step(0.965, gridSt.x) + step(0.965, gridSt.y);
+    float gridDim = gridLine * 0.025;
+    
+    // Base color composition
+    vec3 col = mix(baseDark, midDark, f);
+    
+    // Sharp subtle luminous contours
+    float contour = abs(sin(f * 8.0 + t * 1.2));
+    float ridge = 1.0 - smoothstep(0.0, 0.07, contour);
+    
+    // Green accent touches
+    col += emeraldGlow * pow(f, 2.8) * 0.55;
+    col += phosphorCore * ridge * 0.35;
+    col += emeraldGlow * mouseGlow * 1.2;
+    col += vec3(gridDim);
+    
+    // Vignette
+    float vig = smoothstep(1.3, 0.25, length((st - 0.5) * vec2(1.1, 0.9)));
+    col *= vig;
+
+    gl_FragColor = vec4(col, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_88 -->
+<!-- Subtle Dark Radial / Gradient Overlay for Maximum Contrast & Readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#0d0e10]/80 via-[#121418]/85 to-[#0d0e10]/95 pointer-events-none"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.08),transparent_60%)] pointer-events-none"></div>
+<!-- Top Accent Glow Line -->
+<div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent pointer-events-none z-10"></div>
+<!-- Content Container (Elevated Above Shader and Overlay) -->
+<div class="relative z-10 flex flex-col">
+<!-- Top Cockpit Badges Strip -->
+<div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#1c202a]/80 text-xs font-mono-code">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-medium border border-emerald-500/30 flex items-center gap-1.5 text-[11px] backdrop-blur-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            CS Year 3 @ Tech // Building Daily
+          </span>
+<span class="px-2.5 py-0.5 rounded-full bg-[#181c24]/90 text-secondary border border-[#252c39] text-[11px] backdrop-blur-sm">
+            First-Principles Enthusiast
+          </span>
+</div>
+<div class="flex items-center gap-1.5 font-mono-code text-[11px] text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-2.5 py-0.5 rounded backdrop-blur-sm">
+<span class="text-amber-accent font-bold">⚡</span> Open to SWE Internships 2025
+</div>
+</div>
+<!-- Cockpit Content: Student Bio + Late Night Pixel Art Module -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+<!-- Bio and Philosophy -->
+<div class="md:col-span-7 flex flex-col gap-3.5">
+<div class="flex items-center gap-3">
+<div>
+<h1 class="text-xl sm:text-2xl font-bold tracking-tight text-on-surface">Systems Crafter &amp; CS Student</h1>
+<p class="text-xs font-mono-code text-secondary">Aspiring Systems &amp; Full-Stack Engineer</p>
+</div>
+</div>
+<p class="text-sm leading-relaxed text-[#c3c8d4] mt-1">
+            CS student obsessed with computer architecture, clean code, and shipping real things. I learn by breaking things down to first principles, writing toy compilers from scratch, and building software people actually use.
+          </p>
+<!-- Student Craft Vitals Bar -->
+<div class="mt-2 grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-[#0b0d10]/90 border border-[#1d222c] text-center font-mono-code text-[11px] backdrop-blur-sm">
+<div>
+<span class="block text-secondary text-[10px]">CODE COMMITS</span>
+<span class="font-bold text-on-surface">1,420+ this year</span>
+</div>
+<div class="border-x border-[#1c2029]">
+<span class="block text-secondary text-[10px]">DEEP DIVES</span>
+<span class="font-bold text-emerald-400">14 Teardowns</span>
+</div>
+<div>
+<span class="block text-secondary text-[10px]">PHILOSOPHY</span>
+<span class="font-bold text-sky-400">Build From Scratch</span>
+</div>
+</div>
+</div>
+<!-- Late-Night Command Module with Pixel Art -->
+<div class="md:col-span-5 flex flex-col items-center">
+<div class="w-full bg-[#0a0c0f]/95 border border-[#242936] rounded-xl p-2.5 shadow-xl relative group backdrop-blur-sm">
+<!-- Terminal Header Bar -->
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-[#1b1f28] text-[10px] font-mono-code text-secondary px-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400/80"></span>
+<span class="text-emerald-400/90 font-medium">gcc • 03:42 AM</span>
+</div>
+<span class="text-[#a4abb8]">0 warnings</span>
+</div>
+<!-- Embedded Pixel Art -->
+<div class="relative overflow-hidden rounded-lg border border-[#262c39]">
+<img alt="Late night developer sleeping at desk" class="w-full h-auto block object-cover pixelated" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3QfuwwNlTELPE26rcHcsnDYhqWQoesy_ZOV1Ck3pxOFRnNo9afL7cZY6s4yBbh68Ck-O7vpF2yXAvb9XHZCjAyfA0h-GEiFoq0KYm6c9WhVppnOONFi-2jQNYxo_2TSD0NJxF6JayXsya6W1fQUrR24AoNCo46Uy1ImEpekNmLJxnz77ysJD0EPcFPOLWUMBryFgH785MUilnmrYzvkVxzK1IU6wAj8ZdWiBE55piGdOMy63ywReffkeUgN8esVM7JQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0a0c0f]/80 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<!-- Philosophy Quote -->
+<div class="pt-2 px-1 text-center">
+<p class="text-[11px] font-mono-code text-emerald-300/90 italic leading-snug">
+                “It compiles without warnings. 03:42 AM. Time to read the RFC.”
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: INTERACTIVE PROJECTS & STARTUPS (Enhanced with Interactive Inspection Tabs) -->
+<section class="flex flex-col gap-4"><div class="flex items-end justify-between border-b border-[#1f242e] pb-3">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span class="text-[11px] font-mono-code uppercase tracking-wider text-emerald-400 font-semibold">Projects &amp; Experiments // Learning by Breaking Things</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface tracking-tight mt-0.5">Growth Trajectory Through Code</h2>
+</div>
+<span class="text-xs font-mono-code text-secondary">Built From Scratch</span>
+</div>
+<!-- Stacked Student Project Cards with Interactive Views -->
+<div class="flex flex-col gap-4">
+<!-- Card 1: Mini-C Compiler -->
+<div class="group bg-[#13151a] hover:border-emerald-500/40 border border-[#202530] rounded-2xl p-4 sm:p-5 transition-all duration-200 shadow-md flex flex-col gap-3.5" data-card="minic">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-[#1b1f28] border border-[#282f3d] flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                ⚙️
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-base font-bold text-on-surface group-hover:text-emerald-400 transition-colors">Mini-C: Toy C Compiler &amp; Bytecode VM</h3>
+<a class="material-symbols-outlined text-xs text-secondary hover:text-emerald-400 group-hover:translate-x-0.5 transition-transform" href="https://github.com" target="_blank">north_east</a>
+</div>
+<p class="text-xs text-secondary leading-relaxed mt-0.5">
+                  Wrote a recursive descent parser, AST generator, and register-based virtual machine from scratch in C to understand how code actually executes on silicon.
+                </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5 shrink-0">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code font-semibold">
+<span>Systems &amp; Compilers</span>
+</div>
+<span class="text-[10px] font-mono-code text-secondary hidden sm:inline">C99 · Bytecode VM</span>
+</div>
+</div>
+<!-- Interactive Navigation Tabs -->
+<div class="flex items-center gap-1.5 border-b border-[#1e232e] pb-2 pt-1 font-mono-code text-[11px]">
+<button class="project-tab-btn active px-2.5 py-1 rounded-md text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 font-medium transition-all flex items-center gap-1.5" onclick="switchTab('minic', 'learnings', this)" type="button">
+<span>💡</span> Learnings
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('minic', 'code', this)" type="button">
+<span>&lt; / &gt;</span> Code Snippet
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('minic', 'arch', this)" type="button">
+<span>⬡</span> Architecture
+</button>
+</div>
+<!-- Tab Panel 1: Learnings -->
+<div class="tab-pane" data-tab-content="learnings">
+<div class="text-[11px] font-mono-code text-emerald-300/90 bg-[#0d0e10] p-3 rounded-xl border border-[#1c202a] leading-relaxed">
+💡 <strong>Key Takeaway:</strong> Pointers are friendly once you draw memory diagrams; memory leaks teach discipline better than any linter. Manual stack frames clarified how OS call stacks, register spilling, and ABI calling conventions operate.
+</div>
+</div>
+<!-- Tab Panel 2: Code Snippet -->
+<div class="tab-pane hidden" data-tab-content="code">
+<div class="bg-[#0b0c0f] border border-[#1c202b] rounded-xl overflow-hidden font-mono-code text-[11px]">
+<div class="flex items-center justify-between px-3 py-1.5 bg-[#12141a] border-b border-[#1c202b] text-[10px] text-secondary">
+<span class="flex items-center gap-1.5 text-emerald-400"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>src/vm/eval.c — Dispatch Loop</span>
+<span class="text-[10px]">C99</span>
+</div>
+<pre class="p-3 text-secondary overflow-x-auto leading-5"><code><span class="text-purple-400">typedef enum</span> { OP_PUSH, OP_ADD, OP_LOAD, OP_JMP_IF_ZERO, OP_HALT } OpCode;
+
+<span class="text-blue-400">int64_t</span> <span class="text-emerald-400">vm_eval</span>(VM *vm) {
+  <span class="text-purple-400">while</span> (vm-&gt;pc &lt; vm-&gt;code_len) {
+    <span class="text-blue-400">uint8_t</span> op = vm-&gt;bytecode[vm-&gt;pc++];
+    <span class="text-purple-400">switch</span> (op) {
+      <span class="text-purple-400">case</span> OP_ADD: {
+        <span class="text-blue-400">int64_t</span> b = pop(vm);
+        <span class="text-blue-400">int64_t</span> a = pop(vm);
+        push(vm, a + b); <span class="text-secondary/70">// Fast register-mapped ALU op</span>
+        <span class="text-purple-400">break</span>;
+      }
+      <span class="text-purple-400">case</span> OP_JMP_IF_ZERO: {
+        <span class="text-blue-400">int64_t</span> cond = pop(vm);
+        <span class="text-blue-400">uint16_t</span> addr = read_u16(vm);
+        <span class="text-purple-400">if</span> (cond == <span class="text-amber-300">0</span>) vm-&gt;pc = addr;
+        <span class="text-purple-400">break</span>;
+      }
+      <span class="text-purple-400">case</span> OP_HALT: <span class="text-purple-400">return</span> pop(vm);
+    }
+  }
+  <span class="text-purple-400">return</span> -<span class="text-amber-300">1</span>;
+}</code></pre>
+</div>
+</div>
+<!-- Tab Panel 3: Architecture Diagram -->
+<div class="tab-pane hidden" data-tab-content="arch">
+<div class="bg-[#0b0c10] border border-[#1d222d] rounded-xl p-3 sm:p-4 font-mono-code text-[11px]">
+<div class="text-secondary text-[10px] uppercase tracking-wider mb-2 text-emerald-400 font-semibold">Compiler Pipeline &amp; Execution Cycle</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[10px]">
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-emerald-400 font-bold mb-1">01. Lexer</div>
+<p class="text-secondary text-[9px] leading-tight">Stream of C tokens &amp; source locations</p>
+</div>
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-sky-400 font-bold mb-1">02. Recursive AST</div>
+<p class="text-secondary text-[9px] leading-tight">Type-checked syntax tree &amp; scope table</p>
+</div>
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-amber-400 font-bold mb-1">03. Code Gen</div>
+<p class="text-secondary text-[9px] leading-tight">Emits dense linear bytecode instructions</p>
+</div>
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-rose-400 font-bold mb-1">04. Bytecode VM</div>
+<p class="text-secondary text-[9px] leading-tight">Fast dispatch loop with operand stack</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-[#1a1e28] flex items-center justify-between text-[10px] text-secondary">
+<span>Memory model: Stack frames + Heap Arena allocator</span>
+<span class="text-emerald-400">Zero dynamic allocations in VM loop</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Raft-Lite -->
+<div class="group bg-[#13151a] hover:border-sky-500/40 border border-[#202530] rounded-2xl p-4 sm:p-5 transition-all duration-200 shadow-md flex flex-col gap-3.5" data-card="raft">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-[#1b1f28] border border-[#282f3d] flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                🌐
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-base font-bold text-on-surface group-hover:text-sky-400 transition-colors">Raft-Lite: Distributed Consensus Node</h3>
+<a class="material-symbols-outlined text-xs text-secondary hover:text-sky-400 group-hover:translate-x-0.5 transition-transform" href="https://github.com" target="_blank">north_east</a>
+</div>
+<p class="text-xs text-secondary leading-relaxed mt-0.5">
+                  Implemented a simplified Raft leader election and log replication protocol in Go to stress-test network partitions and split-brain scenarios on localhost.
+                </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky-500/15 border border-sky-400/30 text-sky-300 text-xs font-mono-code font-semibold">
+<span>Distributed Systems</span>
+</div>
+<span class="text-[10px] font-mono-code text-secondary hidden sm:inline">Go · RPC · Consensus</span>
+</div>
+</div>
+<!-- Interactive Navigation Tabs -->
+<div class="flex items-center gap-1.5 border-b border-[#1e232e] pb-2 pt-1 font-mono-code text-[11px]">
+<button class="project-tab-btn active px-2.5 py-1 rounded-md text-sky-400 bg-sky-500/10 border border-sky-500/30 font-medium transition-all flex items-center gap-1.5" onclick="switchTab('raft', 'learnings', this)" type="button">
+<span>💡</span> Learnings
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('raft', 'code', this)" type="button">
+<span>&lt; / &gt;</span> Code Snippet
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('raft', 'arch', this)" type="button">
+<span>⬡</span> Architecture
+</button>
+</div>
+<!-- Tab Panel 1: Learnings -->
+<div class="tab-pane" data-tab-content="learnings">
+<div class="text-[11px] font-mono-code text-sky-300 bg-[#0d0e10] p-3 rounded-xl border border-[#1c202a] leading-relaxed">
+💡 <strong>Key Takeaway:</strong> Distributed state is deceptively hard; deterministic logging is the only thing standing between sanity and silent corruption. Randomized election timeouts (150ms-300ms) elegantly averted perpetual split-vote stalemates.
+</div>
+</div>
+<!-- Tab Panel 2: Code Snippet -->
+<div class="tab-pane hidden" data-tab-content="code">
+<div class="bg-[#0b0c0f] border border-[#1c202b] rounded-xl overflow-hidden font-mono-code text-[11px]">
+<div class="flex items-center justify-between px-3 py-1.5 bg-[#12141a] border-b border-[#1c202b] text-[10px] text-secondary">
+<span class="flex items-center gap-1.5 text-sky-400"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>raft/append_entries.go — Heartbeat &amp; Log Sync</span>
+<span class="text-[10px]">Go 1.22</span>
+</div>
+<pre class="p-3 text-secondary overflow-x-auto leading-5"><code><span class="text-purple-400">func</span> (rf *RaftNode) <span class="text-sky-300">AppendEntries</span>(args *AppendArgs, reply *AppendReply) {
+    rf.mu.<span class="text-sky-400">Lock</span>()
+    <span class="text-purple-400">defer</span> rf.mu.<span class="text-sky-400">Unlock</span>()
+
+    <span class="text-purple-400">if</span> args.Term &lt; rf.currentTerm {
+        reply.Success, reply.Term = <span class="text-rose-400">false</span>, rf.currentTerm
+        <span class="text-purple-400">return</span> <span class="text-secondary/70">// Reject stale leader</span>
+    }
+    <span class="text-purple-400">if</span> args.Term &gt; rf.currentTerm {
+        rf.currentTerm, rf.state = args.Term, StateFollower
+        rf.votedFor = -<span class="text-amber-300">1</span>
+    }
+    rf.resetElectionTimer() <span class="text-secondary/70">// Valid leader keeps node calm</span>
+    <span class="text-purple-400">if</span> len(args.Entries) &gt; <span class="text-amber-300">0</span> {
+        rf.log = append(rf.log[:args.PrevLogIndex+<span class="text-amber-300">1</span>], args.Entries...)
+    }
+    reply.Success = <span class="text-emerald-400">true</span>
+}</code></pre>
+</div>
+</div>
+<!-- Tab Panel 3: Architecture Diagram -->
+<div class="tab-pane hidden" data-tab-content="arch">
+<div class="bg-[#0b0c10] border border-[#1d222d] rounded-xl p-3 sm:p-4 font-mono-code text-[11px]">
+<div class="text-secondary text-[10px] uppercase tracking-wider mb-2 text-sky-400 font-semibold">3-Node Quorum Consensus &amp; Partition Resiliency</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center text-[10px]">
+<div class="w-full bg-[#141924] border border-sky-500/40 rounded-lg p-2.5 text-sky-300">
+<span class="block font-bold">Node 1 [LEADER]</span>
+<span class="text-secondary text-[9px]">Term 4 • AppendEntries()</span>
+</div>
+<div class="text-secondary shrink-0 font-bold hidden sm:block">⇄ RPC ⇄</div>
+<div class="w-full bg-[#141720] border border-[#242a38] rounded-lg p-2.5 text-on-surface">
+<span class="block font-bold">Node 2 [FOLLOWER]</span>
+<span class="text-secondary text-[9px]">Term 4 • MatchIndex: 42</span>
+</div>
+<div class="text-secondary shrink-0 font-bold hidden sm:block">⇄ RPC ⇄</div>
+<div class="w-full bg-[#181515] border border-rose-900/40 rounded-lg p-2.5 text-rose-300">
+<span class="block font-bold">Node 3 [PARTITIONED]</span>
+<span class="text-secondary text-[9px]">Isolated • Re-sync on heal</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-[#1a1e28] flex items-center justify-between text-[10px] text-secondary">
+<span>Quorum condition: majority (2/3 nodes) commits log index</span>
+<span class="text-sky-400">Zero split-brain write divergence</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: CampusLink -->
+<div class="group bg-[#13151a] hover:border-emerald-500/40 border border-[#202530] rounded-2xl p-4 sm:p-5 transition-all duration-200 shadow-md flex flex-col gap-3.5" data-card="campuslink">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-[#1b1f28] border border-[#282f3d] flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                🎓
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-base font-bold text-on-surface group-hover:text-emerald-400 transition-colors">CampusLink: Peer Tutoring Platform</h3>
+<a class="material-symbols-outlined text-xs text-secondary hover:text-emerald-400 group-hover:translate-x-0.5 transition-transform" href="https://github.com" target="_blank">north_east</a>
+</div>
+<p class="text-xs text-secondary leading-relaxed mt-0.5">
+                  First full-stack product shipped to real people on campus. Built with Next.js, PostgreSQL, and WebSockets for live study group coordination.
+                </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code font-semibold">
+<span>1,200 Student Users</span>
+</div>
+<span class="text-[10px] font-mono-code text-secondary hidden sm:inline">Next.js · Postgres · WS</span>
+</div>
+</div>
+<!-- Interactive Navigation Tabs -->
+<div class="flex items-center gap-1.5 border-b border-[#1e232e] pb-2 pt-1 font-mono-code text-[11px]">
+<button class="project-tab-btn active px-2.5 py-1 rounded-md text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 font-medium transition-all flex items-center gap-1.5" onclick="switchTab('campuslink', 'learnings', this)" type="button">
+<span>💡</span> Learnings
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('campuslink', 'code', this)" type="button">
+<span>&lt; / &gt;</span> Code Snippet
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('campuslink', 'arch', this)" type="button">
+<span>⬡</span> Architecture
+</button>
+</div>
+<!-- Tab Panel 1: Learnings -->
+<div class="tab-pane" data-tab-content="learnings">
+<div class="text-[11px] font-mono-code text-emerald-300/90 bg-[#0d0e10] p-3 rounded-xl border border-[#1c202a] leading-relaxed">
+💡 <strong>Key Takeaway:</strong> The best code is useless if real users get confused by UI latency; optimized database indices after our first 500-user spike. Replaced client polling with WebSocket multiplexing to drop server CPU load by 74%.
+</div>
+</div>
+<!-- Tab Panel 2: Code Snippet -->
+<div class="tab-pane hidden" data-tab-content="code">
+<div class="bg-[#0b0c0f] border border-[#1c202b] rounded-xl overflow-hidden font-mono-code text-[11px]">
+<div class="flex items-center justify-between px-3 py-1.5 bg-[#12141a] border-b border-[#1c202b] text-[10px] text-secondary">
+<span class="flex items-center gap-1.5 text-emerald-400"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>app/api/session/claim.ts — Atomic Slot Reservation</span>
+<span class="text-[10px]">TypeScript / SQL</span>
+</div>
+<pre class="p-3 text-secondary overflow-x-auto leading-5"><code><span class="text-purple-400">export async function</span> <span class="text-emerald-400">claimSlot</span>(studentId: <span class="text-blue-400">string</span>, slotId: <span class="text-blue-400">string</span>) {
+  <span class="text-purple-400">return await</span> db.<span class="text-emerald-300">transaction</span>(<span class="text-purple-400">async</span> (tx) =&gt; {
+    <span class="text-secondary/70">// Row-level lock prevents double-booking race condition</span>
+    <span class="text-purple-400">const</span> [slot] = <span class="text-purple-400">await</span> tx.query`
+      <span class="text-sky-300">SELECT</span> id, status <span class="text-sky-300">FROM</span> tutor_slots 
+      <span class="text-sky-300">WHERE</span> id = ${slotId} <span class="text-sky-300">AND</span> status = <span class="text-emerald-400">'OPEN'</span>
+      <span class="text-sky-300">FOR UPDATE SKIP LOCKED</span>`;
+      
+    <span class="text-purple-400">if</span> (!slot) <span class="text-purple-400">throw new</span> <span class="text-rose-400">Error</span>(<span class="text-amber-300">'Slot already reserved by peer'</span>);
+    <span class="text-purple-400">await</span> tx.query`<span class="text-sky-300">UPDATE</span> tutor_slots <span class="text-sky-300">SET</span> status = <span class="text-emerald-400">'BOOKED'</span>, student = ${studentId}`;
+    wsBroadcaster.<span class="text-emerald-300">publish</span>(<span class="text-amber-300">'room_updates'</span>, { slotId, status: <span class="text-emerald-400">'BOOKED'</span> });
+  });
+}</code></pre>
+</div>
+</div>
+<!-- Tab Panel 3: Architecture Diagram -->
+<div class="tab-pane hidden" data-tab-content="arch">
+<div class="bg-[#0b0c10] border border-[#1d222d] rounded-xl p-3 sm:p-4 font-mono-code text-[11px]">
+<div class="text-secondary text-[10px] uppercase tracking-wider mb-2 text-emerald-400 font-semibold">Web Client ⇄ Realtime Sync Topology</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center text-[10px]">
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-emerald-400 font-bold mb-1">React + TanStack</div>
+<p class="text-secondary text-[9px] leading-tight">Optimistic UI updates + WS listener</p>
+</div>
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-sky-400 font-bold mb-1">Node Gateway &amp; WS</div>
+<p class="text-secondary text-[9px] leading-tight">Auth token verification &amp; room multiplexing</p>
+</div>
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-amber-400 font-bold mb-1">PostgreSQL Pool</div>
+<p class="text-secondary text-[9px] leading-tight">B-Tree indexing on `(tutor_id, start_time)`</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-[#1a1e28] flex items-center justify-between text-[10px] text-secondary">
+<span>Live active peer sessions: ~140 concurrent</span>
+<span class="text-emerald-400">p99 Latency &lt; 28ms</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: TinySQL -->
+<div class="group bg-[#13151a] hover:border-amber-500/40 border border-[#1e222a] rounded-2xl p-4 sm:p-5 transition-all duration-200 shadow-md flex flex-col gap-3.5" data-card="tinysql">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-[#171a21] border border-[#242934] flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-all">
+                💾
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-base font-bold text-on-surface group-hover:text-amber-accent transition-colors">TinySQL: In-Memory B-Tree Database</h3>
+<span class="text-[10px] font-mono-code text-secondary">V1 Abandoned → V2 Rebuilt</span>
+</div>
+<p class="text-xs text-secondary leading-relaxed mt-0.5">
+                  Tried building an ACID-compliant engine. Version 1 collapsed under concurrent writes; Version 2 rebuilt with strict write-ahead logging (WAL).
+                </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-mono-code font-medium">
+<span>Iterative Learning</span>
+</div>
+<span class="text-[10px] font-mono-code text-secondary hidden sm:inline">WAL &amp; B-Tree Indexing</span>
+</div>
+</div>
+<!-- Interactive Navigation Tabs -->
+<div class="flex items-center gap-1.5 border-b border-[#1e232e] pb-2 pt-1 font-mono-code text-[11px]">
+<button class="project-tab-btn active px-2.5 py-1 rounded-md text-amber-accent bg-amber-500/10 border border-amber-500/30 font-medium transition-all flex items-center gap-1.5" onclick="switchTab('tinysql', 'learnings', this)" type="button">
+<span>💡</span> Learnings
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('tinysql', 'code', this)" type="button">
+<span>&lt; / &gt;</span> Code Snippet
+</button>
+<button class="project-tab-btn px-2.5 py-1 rounded-md text-secondary hover:text-on-surface hover:bg-[#1a1e27] border border-transparent transition-all flex items-center gap-1.5" onclick="switchTab('tinysql', 'arch', this)" type="button">
+<span>⬡</span> Architecture
+</button>
+</div>
+<!-- Tab Panel 1: Learnings -->
+<div class="tab-pane" data-tab-content="learnings">
+<div class="text-[11px] font-mono-code text-rose-300 bg-[#0d0e10] p-3 rounded-xl border border-[#1c202a] leading-relaxed">
+💡 <strong>Key Takeaway:</strong> Failure is the fastest teacher. Rebuilding from scratch taught me why database internals are engineering marvels. Without fsync guarantees before page dirties, recovery is purely wishful thinking.
+</div>
+</div>
+<!-- Tab Panel 2: Code Snippet -->
+<div class="tab-pane hidden" data-tab-content="code">
+<div class="bg-[#0b0c0f] border border-[#1c202b] rounded-xl overflow-hidden font-mono-code text-[11px]">
+<div class="flex items-center justify-between px-3 py-1.5 bg-[#12141a] border-b border-[#1c202b] text-[10px] text-secondary">
+<span class="flex items-center gap-1.5 text-amber-400"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>storage/btree_split.c — Page Split &amp; Pivot Promotion</span>
+<span class="text-[10px]">C99 / POSIX</span>
+</div>
+<pre class="p-3 text-secondary overflow-x-auto leading-5"><code><span class="text-purple-400">void</span> <span class="text-amber-300">btree_split_child</span>(BNode *parent, <span class="text-blue-400">int</span> idx, BNode *child) {
+    BNode *sibling = bnode_create(child-&gt;is_leaf);
+    sibling-&gt;key_count = T - <span class="text-amber-300">1</span>;
+
+    <span class="text-secondary/70">// Copy upper half of keys into sibling node</span>
+    <span class="text-purple-400">for</span> (<span class="text-blue-400">int</span> j = <span class="text-amber-300">0</span>; j &lt; T - <span class="text-amber-300">1</span>; j++) {
+        sibling-&gt;keys[j] = child-&gt;keys[j + T];
+    }
+    <span class="text-purple-400">int64_t</span> median_key = child-&gt;keys[T - <span class="text-amber-300">1</span>];
+    child-&gt;key_count = T - <span class="text-amber-300">1</span>;
+
+    <span class="text-secondary/70">// Promote pivot key into parent index frame</span>
+    parent_insert_pivot(parent, idx, median_key, sibling);
+    wal_append_split_record(parent-&gt;page_id, child-&gt;page_id, sibling-&gt;page_id);
+}</code></pre>
+</div>
+</div>
+<!-- Tab Panel 3: Architecture Diagram -->
+<div class="tab-pane hidden" data-tab-content="arch">
+<div class="bg-[#0b0c10] border border-[#1d222d] rounded-xl p-3 sm:p-4 font-mono-code text-[11px]">
+<div class="text-secondary text-[10px] uppercase tracking-wider mb-2 text-amber-400 font-semibold">Write-Ahead Log (WAL) &amp; Buffer Pool Pipeline</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center text-[10px]">
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-amber-400 font-bold mb-1">01. WAL Ring Buffer</div>
+<p class="text-secondary text-[9px] leading-tight">Append-only sequential disk writes + strict fdatasync()</p>
+</div>
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-sky-400 font-bold mb-1">02. B-Tree In-Memory</div>
+<p class="text-secondary text-[9px] leading-tight">Branch factor T=64, cacheline aligned key binary search</p>
+</div>
+<div class="bg-[#141720] border border-[#242a38] rounded-lg p-2.5">
+<div class="text-rose-400 font-bold mb-1">03. Checkpoint Daemon</div>
+<p class="text-secondary text-[9px] leading-tight">Asynchronously flushes dirty 4KB disk pages safely</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-[#1a1e28] flex items-center justify-between text-[10px] text-secondary">
+<span>Crash guarantee: Instant recovery on cold boot replay</span>
+<span class="text-amber-400">Zero data loss on SIGKILL</span>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<!-- SECTION 3: TECH RADAR / SLEEP-RATED STACK -->
+<section class="flex flex-col gap-4"><div class="flex items-end justify-between border-b border-[#1f242e] pb-3">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-accent"></span>
+<span class="text-[11px] font-mono-code uppercase tracking-wider text-amber-accent font-semibold">Craft &amp; Learning Radar</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface tracking-tight mt-0.5">Technologies I Study &amp; Build With</h2>
+</div>
+<span class="text-xs font-mono-code text-secondary">Rated by Curiosity &amp; Depth</span>
+</div>
+<!-- Grid of 5 Learning Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+<!-- C & Go -->
+<div class="bg-[#121419] border border-[#202530] rounded-xl p-4 flex flex-col justify-between hover:border-emerald-500/30 transition-all">
+<div>
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-[#1a1f28]">
+<span class="font-bold text-sm text-on-surface">C / Go</span>
+<span class="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#171a22] text-emerald-400 border border-[#252b39]">Systems &amp; Concurrency</span>
+</div>
+<p class="text-xs text-secondary leading-snug">
+              Low-level fundamentals, manual memory management, and concurrency primitives without magical runtime bloat.
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-[#1a1f28] text-[11px] font-mono-code text-emerald-400 flex items-center justify-between">
+<span>Curiosity depth:</span>
+<span class="font-bold">10 / 10 🔥</span>
+</div>
+</div>
+<!-- TypeScript & React -->
+<div class="bg-[#121419] border border-[#202530] rounded-xl p-4 flex flex-col justify-between hover:border-emerald-500/30 transition-all">
+<div>
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-[#1a1f28]">
+<span class="font-bold text-sm text-on-surface">TypeScript &amp; React</span>
+<span class="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#171a22] text-sky-400 border border-[#252b39]">Full-Stack Interface</span>
+</div>
+<p class="text-xs text-secondary leading-snug">
+              Building responsive, strongly typed frontend interfaces with predictable state machines and zero runtime surprises.
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-[#1a1f28] text-[11px] font-mono-code text-emerald-400 flex items-center justify-between">
+<span>Curiosity depth:</span>
+<span class="font-bold">9.2 / 10 🚀</span>
+</div>
+</div>
+<!-- PostgreSQL -->
+<div class="bg-[#121419] border border-[#202530] rounded-xl p-4 flex flex-col justify-between hover:border-emerald-500/30 transition-all">
+<div>
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-[#1a1f28]">
+<span class="font-bold text-sm text-on-surface">PostgreSQL &amp; SQL</span>
+<span class="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#171a22] text-amber-accent border border-[#252b39]">Data Architecture</span>
+</div>
+<p class="text-xs text-secondary leading-snug">
+              Understanding relational algebra, query planners, indexing trade-offs, and ACID transaction durability guarantees.
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-[#1a1f28] text-[11px] font-mono-code text-emerald-400 flex items-center justify-between">
+<span>Curiosity depth:</span>
+<span class="font-bold">9.5 / 10 📚</span>
+</div>
+</div>
+<!-- Computer Architecture & OS -->
+<div class="bg-[#121419] border border-[#202530] rounded-xl p-4 flex flex-col justify-between hover:border-emerald-500/30 transition-all">
+<div>
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-[#1a1f28]">
+<span class="font-bold text-sm text-on-surface">Linux, POSIX &amp; OS</span>
+<span class="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#171a22] text-purple-400 border border-[#252b39]">Core Fundamentals</span>
+</div>
+<p class="text-xs text-secondary leading-snug">
+              Developing comfort in the terminal, exploring kernel syscalls, virtual memory paging, and process scheduling.
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-[#1a1f28] text-[11px] font-mono-code text-emerald-400 flex items-center justify-between">
+<span>Curiosity depth:</span>
+<span class="font-bold">9.8 / 10 ⚡</span>
+</div>
+</div>
+<!-- Distributed Systems & Networking -->
+<div class="bg-[#121419] border border-[#202530] rounded-xl p-4 flex flex-col justify-between hover:border-emerald-500/30 transition-all sm:col-span-2 md:col-span-2">
+<div>
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-[#1a1f28]">
+<span class="font-bold text-sm text-on-surface">Distributed Systems &amp; Networking</span>
+<span class="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#171a22] text-emerald-400 border border-[#252b39]">Active Research</span>
+</div>
+<p class="text-xs text-secondary leading-snug">
+              Exploring consensus protocols (Paxos / Raft), TCP flow control, event-driven socket programming, and building fault-tolerant services that survive chaotic partitions.
+            </p>
+</div>
+<div class="mt-3 pt-2 border-t border-[#1a1f28] text-[11px] font-mono-code text-emerald-400 flex items-center justify-between">
+<span>Curiosity depth:</span>
+<span class="font-bold">10 / 10 🛰️</span>
+</div>
+</div>
+</div></section>
+<!-- SECTION 4: EMAIL INTAKE / NEWSLETTER -->
+<section class="bg-gradient-to-r from-[#121419] via-[#161921] to-[#121419] border border-[#222834] rounded-2xl p-6 sm:p-7 shadow-xl"><div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6" id="contact">
+<div class="flex flex-col gap-1 max-w-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-400 text-sm">terminal</span>
+<span class="text-[11px] font-mono-code text-emerald-400 font-semibold uppercase tracking-wider">Internship &amp; Collaboration Invite</span>
+</div>
+<h3 class="text-base sm:text-lg font-bold text-on-surface tracking-tight">Looking for hard engineering problems &amp; great mentors</h3>
+<p class="text-xs text-secondary leading-relaxed">
+            Seeking Summer '25 SWE internship roles. Always eager to dive into distributed systems, compilers, or high-throughput backends alongside experienced teams.
+          </p>
+</div>
+<!-- Direct Connect Form -->
+<form class="w-full sm:w-auto flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault(); document.getElementById('sub-btn').innerText = 'Sent! Let\'s talk soon ✓';">
+<input class="bg-[#0b0c10] border border-[#282f3d] focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 rounded-xl px-3.5 py-2.5 text-xs text-on-surface placeholder:text-secondary font-mono-code outline-none min-w-[220px]" placeholder="your.email@team.com" required="" type="email"/>
+<button class="bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl transition-all font-mono-code shrink-0 shadow-lg shadow-emerald-500/10 active:scale-95" id="sub-btn" type="submit">
+            Get In Touch
+          </button>
+</form>
+</div></section>
+</div>
+</main>
+<!-- Polished Dark Obsidian Footer -->
+<footer class="w-full border-t border-[#181a20] py-8 bg-[#090a0d] mt-12"><div class="max-w-[780px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-code text-secondary">
+<div class="flex items-center gap-2">
+<span>© 2025 Anonymous Developer</span>
+<span class="text-[#252831]">•</span>
+<span class="text-on-surface-variant font-medium">Built w/ Curiosity &amp; Craft</span>
+</div>
+<div class="flex items-center gap-5">
+<a class="hover:text-emerald-400 transition-colors" href="https://github.com" rel="noreferrer" target="_blank">GitHub</a>
+<a class="hover:text-emerald-400 transition-colors" href="https://twitter.com" rel="noreferrer" target="_blank">Twitter / X</a>
+<a class="hover:text-emerald-400 transition-colors" href="https://linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a>
+<a class="text-emerald-400 hover:underline font-mono-code" href="mailto:alex@rivera.dev">alex@rivera.dev</a>
+</div>
+</div></footer>
+<!-- Interactive Tab Switcher Script -->
+<script>
+function switchTab(cardKey, tabName, activeBtn) {
+  const card = document.querySelector(`[data-card="${cardKey}"]`);
+  if (!card) return;
+
+  // Toggle active tab buttons inside this specific card
+  const tabButtons = card.querySelectorAll('.project-tab-btn');
+  tabButtons.forEach(btn => {
+    btn.classList.remove('active', 'text-emerald-400', 'bg-emerald-500/10', 'border-emerald-500/30', 'text-sky-400', 'bg-sky-500/10', 'border-sky-500/30', 'text-amber-accent', 'bg-amber-500/10', 'border-amber-500/30');
+    btn.classList.add('text-secondary', 'border-transparent');
+  });
+
+  // Apply card-specific accent colors for the selected active tab
+  activeBtn.classList.remove('text-secondary', 'border-transparent');
+  activeBtn.classList.add('active');
+
+  if (cardKey === 'raft') {
+    activeBtn.classList.add('text-sky-400', 'bg-sky-500/10', 'border-sky-500/30');
+  } else if (cardKey === 'tinysql') {
+    activeBtn.classList.add('text-amber-accent', 'bg-amber-500/10', 'border-amber-500/30');
+  } else {
+    activeBtn.classList.add('text-emerald-400', 'bg-emerald-500/10', 'border-emerald-500/30');
+  }
+
+  // Toggle visible pane inside this card
+  const panes = card.querySelectorAll('.tab-pane');
+  panes.forEach(pane => {
+    if (pane.getAttribute('data-tab-content') === tabName) {
+      pane.classList.remove('hidden');
+    } else {
+      pane.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body></html>
