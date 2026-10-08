@@ -1,15 +1,83 @@
-function ProjectSection() {
-    return (
-        <section className="projects-section">
-            <h2>My Projects</h2>
-            <p>Here are some of the projects I've worked on:</p>
-            <ul>
-                <li>Project 1: A web application for managing tasks.</li>
-                <li>Project 2: A mobile app for tracking fitness activities.</li>
-                <li>Project 3: An e-commerce platform for selling products online.</li>
-            </ul>
-        </section>
-    );
+import ProjectCard, { type Project } from "./ProjectCard";
+
+const projects: Project[] = [
+  {
+    title: "Mini-C: Toy Compiler & Bytecode VM",
+    icon: "⚙",
+    category: "Systems & compilers",
+    description:
+      "A from-scratch C compiler and register-based virtual machine for understanding how code executes.",
+    technologies: ["C99", "Bytecode VM"],
+    takeaway:
+      "Drawing memory diagrams made pointers approachable; manual stack frames clarified how call stacks and register spilling work.",
+    architecture:
+      "Lexer → recursive-descent AST → bytecode generation → operand-stack VM.",
+    accent: "lime",
+    link: "https://github.com",
+  },
+  {
+    title: "Raft-Lite: Distributed Consensus Node",
+    icon: "◈",
+    category: "Distributed systems",
+    description:
+      "A compact consensus node built to explore leader election, replication, and failure recovery.",
+    technologies: ["Go", "TCP", "State machines"],
+    takeaway:
+      "The hard part was making failure behavior explicit: timeouts and retries became part of the design rather than edge cases.",
+    architecture:
+      "Client requests → replicated log → leader election → committed state machine.",
+    accent: "blue",
+    link: "https://github.com",
+  },
+  {
+    title: "CampusLink: Student Utility Platform",
+    icon: "⌘",
+    category: "Full-stack interface",
+    description:
+      "A focused interface for helping students discover useful campus resources and coordinate around them.",
+    technologies: ["React", "TanStack", "TypeScript"],
+    takeaway:
+      "Small feedback loops matter: a fast interface and clear empty states make an early product feel trustworthy.",
+    architecture:
+      "Typed UI state → query layer → reusable feature cards → responsive interface.",
+    accent: "lime",
+    link: "https://github.com",
+  },
+  {
+    title: "TinySQL: In-Memory B-Tree Database",
+    icon: "▣",
+    category: "Iterative learning",
+    description:
+      "An in-memory SQL engine built to understand indexing, parsing, and transaction-shaped state.",
+    technologies: ["Rust", "B-Tree", "SQL"],
+    takeaway:
+      "Rebuilding from scratch made failure modes visible: the fastest teacher was understanding why each invariant existed.",
+    architecture:
+      "SQL parser → query planner → B-tree index → in-memory table scan.",
+    accent: "amber",
+    link: "https://github.com",
+  },
+];
+
+function ProjectsSection() {
+  return (
+    <section className="projects-section" id="projects" aria-labelledby="projects-title">
+      <header className="section-heading">
+        <div>
+          <span className="section-heading__eyebrow mono-label">
+            <span aria-hidden="true" /> Projects &amp; experiments
+          </span>
+          <h2 id="projects-title">Growth trajectory through code</h2>
+        </div>
+        <span className="section-heading__aside mono-label">Built from scratch</span>
+      </header>
+      <div className="projects-list">
+        {projects.map((project) => (
+          <ProjectCard key={project.title} project={project} />
+        ))}
+      </div>
+    </section>
+  );
 }
 
-export default ProjectSection;
+export default ProjectsSection;

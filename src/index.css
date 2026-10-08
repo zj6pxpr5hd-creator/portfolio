@@ -1,32 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --canvas: #090c0a;
-  --surface: #101613;
-  --surface-inset: #080c0a;
-  --ink: #e7f5ea;
-  --muted: #a5b5aa;
-  --border: #22382a;
-  --lime: #39ff88;
-  --lime-soft: #9de7b8;
-  --cobalt: #9de7b8;
-  --amber: #f5b942;
-  --status-background: #0f7a42;
-  --status-ink: #d2ffe1;
-  --error: #ffb4ab;
+  --canvas: #0d0e10;
+  --surface: #121418;
+  --surface-inset: #0b0c0f;
+  --ink: #e4e7ec;
+  --muted: #9ba1ad;
+  --border: #202530;
+  --lime: #34d399;
+  --lime-soft: #6ee7b7;
+  --cobalt: #60a5fa;
+  --amber: #f59e0b;
+  --status-background: #064e3b;
+  --status-ink: #a7f3d0;
+  --error: #fda4af;
 
-  --surface-dim: #0d110f;
-  --surface-low: #0d1210;
-  --surface-container: #111a15;
-  --surface-high: #17231b;
-  --surface-highest: #1e3023;
-  --surface-tint: #39ff88;
-  --primary: #39ff88;
-  --primary-container: #0f7a42;
-  --secondary: #b6c7ba;
-  --tertiary: #9de7b8;
-  --outline: #6b8f76;
-  --outline-variant: #294333;
+  --surface-dim: #121315;
+  --surface-low: #16181b;
+  --surface-container: #1b1d22;
+  --surface-high: #23262d;
+  --surface-highest: #2c3038;
+  --surface-tint: #34d399;
+  --primary: #34d399;
+  --primary-container: #064e3b;
+  --secondary: #7e8594;
+  --tertiary: #60a5fa;
+  --outline: #596170;
+  --outline-variant: #2b303a;
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -39,11 +39,11 @@
   --margin: 3rem;
   --margin-mobile: 1.25rem;
 
-  --radius-sm: 0;
-  --radius: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
+  --radius-sm: 1rem;
+  --radius: 1rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1rem;
 
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
