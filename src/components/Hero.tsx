@@ -46,7 +46,7 @@ function Hero() {
             </span>
           </div>
           <div className="hero__panel-screen" aria-hidden="true">
-            <img src="/design-reference/screenshots/profile_pic.jpeg" alt="Developer screen" />
+            <img src="/public/profile_pic.jpeg" alt="Developer screen" />
           </div>
           <div className="hero__panel-footer">
             <span className="mono-label">studying / building in public</span>
