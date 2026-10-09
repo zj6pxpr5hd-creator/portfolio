@@ -2,7 +2,7 @@ export type Technology = {
   name: string;
   category: string;
   description: string;
-  accent: "lime" | "blue" | "amber" | "purple";
+  accent: "lime" | "cobalt" | "amber" | "fuchsia" | "purple" | "teal";
   path: string;
   code: string;
   strength: string;

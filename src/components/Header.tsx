@@ -3,7 +3,7 @@ function Header() {
     <header className="site-header">
       <div className="site-header__identity">
         <a className="site-header__brand" href="#top">
-          <span className="site-header__brand-name">Systems Crafter</span>
+          <span className="site-header__brand-name">Edoardo Chessa</span>
           <span className="site-header__subtitle">
             SWE Undergrad · Building from scratch
           </span>
@@ -19,7 +19,7 @@ function Header() {
       <div className="site-header__actions">
         <span className="site-header__availability">
           <span className="site-header__availability-dot" aria-hidden="true" />
-          PLACEHOLDER
+          ONLINE
         </span>
         <a className="site-header__cta" href="#contact">
           Let&apos;s Talk Code

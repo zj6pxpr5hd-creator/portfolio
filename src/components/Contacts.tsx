@@ -4,43 +4,31 @@ function Contacts() {
       <section className="contacts" id="contact" aria-labelledby="contact-title">
         <div className="contacts__copy">
           <span className="contacts__eyebrow mono-label">
-            <span aria-hidden="true">▣</span> Internship &amp; collaboration invite
+            <span aria-hidden="true">▣</span> collaborations
           </span>
-          <h2 id="contact-title">Looking for hard engineering problems &amp; great mentors</h2>
-          <p>
-            Seeking SWE internship roles. Always eager to dive into distributed
-            systems, compilers, or high-throughput backends alongside experienced
-            teams.
-          </p>
-        </div>
-        <div className="contacts__actions">
-          <a className="contacts__email" href="mailto:example@email.com">
-            example@email.com
-          </a>
-          <a className="contacts__button" href="mailto:example@email.com">
-            Get in touch
-          </a>
+          <h2 id="contact-title">Looking for hard engineering problems </h2>
+          <nav aria-label="Social links" className="contacts__links">
+            <a href="https://github.com/zj6pxpr5hd-creator" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a href="https://x.com/Edozzz06" target="_blank" rel="noreferrer">
+              Twitter / X
+            </a>
+            <a href="https://www.linkedin.com/in/edoardo-chessa-65487a442" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a href="mailto:example@email.com">edoardovolley06@gmail.com</a>
+          </nav>
         </div>
       </section>
 
       <div className="site-footer__meta">
         <div>
-          <span>© 2025 Anonymous Developer</span>
+          <span>© 2026 Edoardo Chessa</span>
           <span aria-hidden="true">•</span>
-          <span>Built w/ Curiosity &amp; Craft</span>
+          <span>Built w/ Curiosity &amp; Passion</span>
         </div>
-        <nav aria-label="Social links">
-          <a href="https://github.com" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            Twitter / X
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a href="mailto:example@email.com">example@email.com</a>
-        </nav>
+        
       </div>
     </>
   );

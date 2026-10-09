@@ -13,49 +13,49 @@ const projects: Project[] = [
     architecture:
       "React / Vite frontend → Express backend → Gemini API → SQLite database.",
     accent: "fuchsia",
-    link: "https://github.com",
+    link: "https://github.com/zj6pxpr5hd-creator/aurora_prot.git",
   },
   {
-    title: "Raft-Lite: Distributed Consensus Node",
-    icon: "◈",
-    category: "Distributed systems",
+    title: "Hosting Aurora On My Home Server",
+    icon: "💾",
+    category: "Hosting and Deployment",
     description:
-      "A compact consensus node built to explore leader election, replication, and failure recovery.",
-    technologies: ["Go", "TCP", "State machines"],
+      "A personal guide to hosting a web application on a personal server.",
+    technologies: ["Ubuntu", "Docker", "Tailscale" ],
     takeaway:
-      "The hard part was making failure behavior explicit: timeouts and retries became part of the design rather than edge cases.",
+      "Understanding the different steps required to deploy an application, from Docker containers to outside access and security.",
     architecture:
-      "Client requests → replicated log → leader election → committed state machine.",
+      "My old laptop running Ubuntu → Docker containers → Tailscale",
     accent: "blue",
-    link: "https://github.com",
+    link: "https://github.com/zj6pxpr5hd-creator/home-server-hosting.git",
   },
   {
-    title: "CampusLink: Student Utility Platform",
-    icon: "⌘",
-    category: "Full-stack interface",
+    title: "All Auth",
+    icon: "🔒",
+    category: "Authentication & Authorization",
     description:
-      "A focused interface for helping students discover useful campus resources and coordinate around them.",
-    technologies: ["React", "TanStack", "TypeScript"],
+      "An implementation of an authentication system built fully from scratch, that tries to be as professional as possible",
+    technologies: ["React", "Express", "PostgreSQL", "JWT", "bcrypt"],
     takeaway:
-      "Small feedback loops matter: a fast interface and clear empty states make an early product feel trustworthy.",
+      "Understanding the intricacies of authentication and authorization, and how to implement them securely in a web application.",
     architecture:
-      "Typed UI state → query layer → reusable feature cards → responsive interface.",
+      "React frontend → Express backend → PostgreSQL database → JWT→ bcrypt",
     accent: "teal",
-    link: "https://github.com",
+    link: "https://github.com/zj6pxpr5hd-creator/all-auth.git",
   },
   {
-    title: "TinySQL: In-Memory B-Tree Database",
-    icon: "▣",
-    category: "Iterative learning",
+    title: "SignalBoard",
+    icon: "✒️",
+    category: "Full-stack web application",
     description:
-      "An in-memory SQL engine built to understand indexing, parsing, and transaction-shaped state.",
-    technologies: ["Rust", "B-Tree", "SQL"],
+      "A small web application where users can signup/login, post signals that all other users can see and delete their own signals.",
+    technologies: ["React", "Express", "PostgreSQL"],
     takeaway:
-      "Rebuilding from scratch made failure modes visible: the fastest teacher was understanding why each invariant existed.",
+      "As my first full-stack web application, I learned how frontend and backend communicate with each other, how to structure a real app.",
     architecture:
-      "SQL parser → query planner → B-tree index → in-memory table scan.",
+      "React frontend → Express backend → PostgreSQL database.",
     accent: "amber",
-    link: "https://github.com",
+    link: "https://github.com/zj6pxpr5hd-creator/signal-board.git",
   },
 ];
 

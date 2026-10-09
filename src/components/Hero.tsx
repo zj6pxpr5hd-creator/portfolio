@@ -14,10 +14,10 @@ function Hero() {
 
       <div className="hero__grid">
         <div className="hero__copy">
-          <h1 id="hero-title">Serial Builder &amp; SWE Student</h1>
-          <p className="hero__role">Aspiring Systems &amp; Full-Stack Engineer</p>
+          <h1 id="hero-title">Edoardo Chessa</h1>
+          <p className="hero__role">SWE Student at Politecnico di Milano &amp; Serial Builder</p>
           <p className="hero__summary">
-            SWE student obsessed with shipping real things while maintaining a stellar GPA. 
+            POLIMI student obsessed with shipping real things while maintaining a stellar GPA. 
             I love to build and break things, and I'm always looking for the next challenge.
           </p>
 
@@ -28,11 +28,11 @@ function Hero() {
             </div>
             <div className="hero__metric">
               <span className="mono-label">Mode</span>
-              <strong>Learn by shipping</strong>
+              <strong>Learn by doing</strong>
             </div>
             <div className="hero__metric">
-              <span className="mono-label">Signal</span>
-              <strong>Curious, hands-on</strong>
+              <span className="mono-label">GPA</span>
+              <strong>29.83/30</strong>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@ function Hero() {
             <img src="/design-reference/screenshots/profile_pic.jpeg" alt="Developer screen" />
           </div>
           <div className="hero__panel-footer">
-            <span className="mono-label">status / building in public</span>
+            <span className="mono-label">studying / building in public</span>
             <code>const next = ship(idea);</code>
           </div>
         </div>

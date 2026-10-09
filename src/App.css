@@ -197,8 +197,8 @@
 .contacts__copy {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-xs);
-	max-width: 28rem;
+	gap: var(--space-sm);
+	width: 100%;
 }
 
 .contacts__eyebrow {
@@ -903,9 +903,9 @@
 	color: var(--error);
 }
 
-.technology-card--blue .technology-card__category {
+.technology-card--cobalt .technology-card__category {
 	color: #93c5fd;
-	border-color: color-mix(in srgb, #60a5fa 35%, var(--border));
+	border-color: color-mix(in srgb, var(--cobalt) 35%, var(--border));
 }
 
 .technology-card--amber .technology-card__category {
@@ -915,11 +915,29 @@
 
 .technology-card--purple .technology-card__category {
 	color: #c4b5fd;
-	border-color: color-mix(in srgb, #a78bfa 35%, var(--border));
+	border-color: color-mix(in srgb, var(--purple) 35%, var(--border));
 }
 
-.technology-card--blue:hover {
-	border-color: color-mix(in srgb, #60a5fa 45%, var(--border));
+.technology-card--fuchsia .technology-card__category {
+	color: var(--fuchsia);
+	border-color: color-mix(in srgb, var(--fuchsia) 35%, var(--border));
+}
+	
+.technology-card--teal .technology-card__category {
+	color: var(--teal);
+	border-color: color-mix(in srgb, var(--teal) 35%, var(--border));
+}
+	
+.technology-card--teal:hover {
+	border-color: color-mix(in srgb, var(--teal) 45%, var(--border));
+}
+
+.technology-card--fuchsia:hover {
+	border-color: color-mix(in srgb, var(--fuchsia) 45%, var(--border));
+}
+
+.technology-card--cobalt:hover {
+	border-color: color-mix(in srgb, var(--cobalt) 45%, var(--border));
 }
 
 .technology-card--amber:hover {
@@ -927,11 +945,24 @@
 }
 
 .technology-card--purple:hover {
-	border-color: color-mix(in srgb, #a78bfa 45%, var(--border));
+	border-color: color-mix(in srgb, var(--purple) 45%, var(--border));
 }
 
 
+.contacts__links{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.contacts__links a {
+	transition: color 160ms ease;
+}
 
+.contacts__links a:hover,
+.contacts__links a:focus-visible {
+	color: var(--lime);
+}
 
 
 @keyframes availability-pulse {

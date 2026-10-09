@@ -2,72 +2,104 @@ import TechnologyCard, { type Technology } from "./TechnologyCard";
 
 const technologies: Technology[] = [
   {
-    name: "C / Go",
-    category: "Systems & concurrency",
+    name: "HTML, CSS and JavaScript",
+    category: "Universal and Foundational",
     description:
-      "Low-level fundamentals, manual memory management, and concurrency primitives without magical runtime bloat.",
-    accent: "lime",
-    path: "runtime/go_lang.demo",
-    code: `go func serve(ctx context.Context) error {
-  return http.ListenAndServe(":8080", nil)
-}`,
-    strength: "Predictable memory, simple concurrency, rock-solid standard library.",
-    tradeoff: "Explicit error paths and fewer guardrails mean more design responsibility.",
+      "The first programming languages I learned by myself following my passion to see things appear on screen after writing a line of code.",
+    accent: "fuchsia",
+    path: "/index.html",
+    code: `<button id="btn">Light Mode</button>
+  <style> 
+    #btn {cursor: pointer;}  .dark {color: #fff;} 
+  </style>
+  <script> 
+    btn.onclick = () => btn.textContent = btn.classList.toggle('dark') ? 'Dark Mode' : 
+    'Light Mode';
+  </script>`,
+    strength: "Extremely fast feedback loop, Clean separation of concerns, Massive ecosystem and accessibility.",
+    tradeoff: "Debugging CSS, Global scope Bleed, Client performance bloat.",
+    wide: true
   },
+
+
+
   {
     name: "TypeScript & React",
     category: "Full-stack interface",
     description:
-      "Building responsive, strongly typed frontend interfaces with predictable state machines and zero runtime surprises.",
-    accent: "blue",
+      "My first framework and the one I still use to build responsive, strongly typed frontend interfaces with predictable state machines and zero runtime surprises.",
+    accent: "cobalt",
     path: "client/contracts.schema.ts",
-    code: `type ApiResponse<T> =
-  | { status: "ok"; data: T }
-  | { status: "fail"; code: string };`,
-    strength: "Fearless refactors across UI components and shared contracts.",
-    tradeoff: "Complex recursive generics can make diagnostics feel dense.",
+    code: `export interface ChatMessage {
+  role: 'user' | 'assistant' | 'info';
+  content: string;}
+
+const updatedMessages: ChatMessage[] = 
+  [...messages, { role: 'user' as const, 
+  content: value }];
+
+setMessages(updatedMessages);
+`,
+    strength: "Type-Safe component contracts, Refactoring confidence.",
+    tradeoff: "Boilerplate and verbosity increases code size, No built-in runtime safety.",
   },
+
+  {
+    name: "Express.js",
+    category: "Minimalist Backend",
+    description:
+      "The bare-bones, middleware-driven microframework that established the standard for HTTP routing and API development in Node.js.",
+    accent: "amber",
+    path: "signalboard/server/index.js",
+    code: `import express from 'express';
+const app = express();
+
+app.get('/api', (req, res) => res.json({ status: 'ok' }));
+app.listen(3000);`,
+    strength: "Extreme architectural freedom, Rapid prototyping and a Small learning curve.",
+    tradeoff: "Lack of strict conventions, Async error handling complexity.",
+
+  },
+
   {
     name: "PostgreSQL & SQL",
     category: "Data architecture",
     description:
       "Understanding relational algebra, query planners, indexing trade-offs, and ACID transaction durability guarantees.",
-    accent: "amber",
-    path: "storage/ledger.audit.sql",
-    code: `BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-UPDATE accounts SET balance = balance - 100;`,
+    accent: "lime",
+    path: "db/schema.sql",
+    code: `CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);`,
     strength: "Durable relational guarantees, expressive queries, transparent plans.",
     tradeoff: "Connection pooling and migrations require operational discipline.",
   },
+
+
+
   {
-    name: "Linux, POSIX & OS",
-    category: "Core fundamentals",
+    name: "Docker & Linux",
+    category: "Deployment",
     description:
-      "Developing comfort in the terminal, exploring kernel syscalls, virtual memory paging, and process scheduling.",
+      "Used to containerize applications and managing them in a Linux environment.",
     accent: "purple",
-    path: "infra/system.service.unit",
-    code: `[Unit]
-Description=Portfolio API Service
-[Service]
-ExecStart=/usr/local/bin/api`,
-    strength: "Near-zero overhead, instant reboots, and direct system visibility.",
-    tradeoff: "Requires comfort with POSIX signals, permissions, and disk I/O.",
+    path: "aurora_prot/Dockerfile",
+    code: `  FROM node:22-alpine AS frontend-builder
+
+  RUN corepack enable && corepack prepare 
+  pnpm@12.9.1 --activate
+  
+  WORKDIR /app`,
+    strength: "Containerized deployment, Reproducible builds, and Linux command-line proficiency.",
+    tradeoff: "Disk and layer bloat, Persistent storage management, and Linux learning curve.",
   },
-  {
-    name: "Distributed Systems & Networking",
-    category: "Active research",
-    description:
-      "Exploring consensus protocols, TCP flow control, event-driven socket programming, and fault-tolerant services that survive chaotic partitions.",
-    accent: "lime",
-    path: "network/consensus_notes.md",
-    code: `term := raft.ElectionTimeout
-if leader == nil {
-  startElection(term + 1)
-}`,
-    strength: "Failure-aware architecture and a sharper understanding of trade-offs.",
-    tradeoff: "Distributed correctness is expensive to explain, test, and operate.",
-    wide: true,
-  },
+
+
+
+
 ];
 
 function Stack() {
