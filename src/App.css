@@ -14,6 +14,20 @@
 	color: var(--amber);
 }
 
+
+.project-card--fuchsia .project-card__category,
+.project-card--fuchsia .project-card__details .mono-label {
+	border-color: color-mix(in srgb, var(--fuchsia) 45%, var(--border));
+	color: var(--fuchsia);
+}
+
+
+.project-card--teal .project-card__category,
+.project-card--teal .project-card__details .mono-label {
+	border-color: color-mix(in srgb, var(--teal) 45%, var(--border));
+	color: var(--teal);
+}
+
 .project-card__learning {
 	background: var(--surface-inset);
 	border: 1px solid var(--border);
@@ -333,10 +347,42 @@
 	transition: border-color 160ms ease, transform 160ms ease;
 }
 
-.project-card:hover,
-.project-card:focus-within {
+.project-card--fuchsia:hover,
+.project-card--fuchsia:focus-within {
+	border-color: color-mix(in srgb, var(--fuchsia) 50%, var(--border));
+	transform: translateY(-2px);
+}
+
+
+
+.project-card--amber:hover,
+.project-card--amber:focus-within {
+	border-color: color-mix(in srgb, var(--amber) 50%, var(--border));
+	transform: translateY(-2px);
+}
+
+.project-card--lime:hover,
+.project-card--lime:focus-within {
 	border-color: color-mix(in srgb, var(--lime) 50%, var(--border));
 	transform: translateY(-2px);
+}
+
+.project-card--blue:hover,
+.project-card--blue:focus-within {
+	border-color: color-mix(in srgb, var(--cobalt) 100%, var(--border));
+	transform: translateY(-2px);
+}
+
+.project-card--teal:hover,
+.project-card--teal:focus-within {
+	border-color: color-mix(in srgb, var(--teal) 50%, var(--border));
+	transform: translateY(-2px);
+}
+
+.project-card--fuchsia:hover h3,
+.project-card--fuchsia:focus-within h3
+{
+	color: var(--fuchsia);
 }
 
 .project-card__header {
@@ -377,9 +423,29 @@
 	transition: color 160ms ease;
 }
 
-.project-card:hover .project-card__title-row h3,
-.project-card:focus-within .project-card__title-row h3 {
+.project-card--lime:hover .project-card__title-row h3,
+.project-card--lime:focus-within .project-card__title-row h3 {
 	color: var(--lime);
+}
+
+.project-card--fuchsia:hover .project-card__title-row h3,
+.project-card--fuchsia:focus-within .project-card__title-row h3 {
+	color: var(--fuchsia);
+}
+
+.project-card--teal:hover .project-card__title-row h3,
+.project-card--teal:focus-within .project-card__title-row h3 {
+	color: var(--teal);
+}
+
+.project-card--blue:hover .project-card__title-row h3,
+.project-card--blue:focus-within .project-card__title-row h3 {
+	color: var(--cobalt);
+}
+
+.project-card--amber:hover .project-card__title-row h3,
+.project-card--amber:focus-within .project-card__title-row h3 {
+	color: var(--amber);
 }
 
 .project-card__link {
@@ -451,7 +517,6 @@
 	flex-direction: column;
 	gap: var(--space-lg);
 	overflow: hidden;
-	padding: var(--space-lg);
 	position: relative;
 	border-radius: 0.75rem;
 }
@@ -488,6 +553,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--space-sm);
+	margin-bottom: var(--space-sm);
 }
 
 .hero__badges span {
@@ -518,8 +584,8 @@
 	border-color: color-mix(in srgb, var(--lime) 35%, var(--border));
 	border-radius: 4px;
 	color: var(--lime);
-	position: absolute;
-	right: 0;
+	position: relative;
+	margin-left: auto;
 }
 
 .hero__grid {
@@ -863,6 +929,8 @@
 .technology-card--purple:hover {
 	border-color: color-mix(in srgb, #a78bfa 45%, var(--border));
 }
+
+
 
 
 

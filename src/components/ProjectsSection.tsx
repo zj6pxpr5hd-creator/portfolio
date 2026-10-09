@@ -2,17 +2,17 @@ import ProjectCard, { type Project } from "./ProjectCard";
 
 const projects: Project[] = [
   {
-    title: "Mini-C: Toy Compiler & Bytecode VM",
-    icon: "⚙",
-    category: "Systems & compilers",
+    title: "Aurora",
+    icon: "✦",
+    category: "AI integration",
     description:
-      "A from-scratch C compiler and register-based virtual machine for understanding how code executes.",
-    technologies: ["C99", "Bytecode VM"],
+      "Aurora is a AI assistant whose goal is to make the technological environment it is put in work in favor of the user.",
+    technologies: ["React", "Express", "Gemini API", "SQLite"],
     takeaway:
-      "Drawing memory diagrams made pointers approachable; manual stack frames clarified how call stacks and register spilling work.",
+      "Understanding the nuances of AI integration and how to manage it's context in a way that enhances user experience.",
     architecture:
-      "Lexer → recursive-descent AST → bytecode generation → operand-stack VM.",
-    accent: "lime",
+      "React / Vite frontend → Express backend → Gemini API → SQLite database.",
+    accent: "fuchsia",
     link: "https://github.com",
   },
   {
@@ -40,7 +40,7 @@ const projects: Project[] = [
       "Small feedback loops matter: a fast interface and clear empty states make an early product feel trustworthy.",
     architecture:
       "Typed UI state → query layer → reusable feature cards → responsive interface.",
-    accent: "lime",
+    accent: "teal",
     link: "https://github.com",
   },
   {

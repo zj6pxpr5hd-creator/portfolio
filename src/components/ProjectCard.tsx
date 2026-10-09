@@ -6,7 +6,7 @@ export type Project = {
   technologies: string[];
   takeaway: string;
   architecture: string;
-  accent: "lime" | "blue" | "amber";
+  accent: "lime" | "blue" | "amber" | "fuchsia" | "teal";
   link?: string;
 };
 

@@ -1,24 +1,24 @@
 import CommandModule from "./CommandModule";
+import AnimatedBackground from "./AnimatedBackground";
 
 function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
+      <AnimatedBackground>
       <CommandModule />
       <div className="hero__badges" aria-label="Current profile">
-        <span className="hero__badge--highlight">CS Year 3 / Tech · Building Daily</span>
-        <span>First-principles enthusiast</span>
-        <span className="hero__badge--accent">Open to SWE internships</span>
+        <span className="hero__badge--highlight">SWE Year 2 / Tech · Building Daily</span>
+        <span>Technology enthusiast</span>
+        <span className="hero__badge--accent">💻 Looking for SWE internships</span>
       </div>
 
       <div className="hero__grid">
         <div className="hero__copy">
-          <h1 id="hero-title">Systems Crafter &amp; CS Student</h1>
+          <h1 id="hero-title">Serial Builder &amp; SWE Student</h1>
           <p className="hero__role">Aspiring Systems &amp; Full-Stack Engineer</p>
           <p className="hero__summary">
-            CS student obsessed with computer architecture, clean code, and
-            shipping real things. I learn by breaking things down to first
-            principles, writing toy compilers from scratch, and building
-            software people actually use.
+            SWE student obsessed with shipping real things while maintaining a stellar GPA. 
+            I love to build and break things, and I'm always looking for the next challenge.
           </p>
 
           <div className="hero__metrics" aria-label="Current focus">
@@ -39,7 +39,7 @@ function Hero() {
 
         <div className="hero__panel" aria-label="Developer status">
           <div className="hero__panel-header">
-            <span className="mono-label">gcc · 03:42 AM</span>
+            <span className="mono-label">Status</span>
             <span className="hero__panel-status">
               <span aria-hidden="true" />
               0 warnings
@@ -54,6 +54,7 @@ function Hero() {
           </div>
         </div>
       </div>
+      </AnimatedBackground>
     </section>
   );
 }
