@@ -8,13 +8,28 @@ function Contacts() {
           </span>
           <h2 id="contact-title">Looking for hard engineering problems </h2>
           <nav aria-label="Social links" className="contacts__links">
-            <a href="https://github.com/zj6pxpr5hd-creator" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/zj6pxpr5hd-creator"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub (opens in a new tab)"
+            >
               GitHub
             </a>
-            <a href="https://x.com/Edozzz06" target="_blank" rel="noreferrer">
+            <a
+              href="https://x.com/Edozzz06"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Twitter / X (opens in a new tab)"
+            >
               Twitter / X
             </a>
-            <a href="https://www.linkedin.com/in/edoardo-chessa-65487a442" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.linkedin.com/in/edoardo-chessa-65487a442"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn (opens in a new tab)"
+            >
               LinkedIn
             </a>
             <a href="mailto:example@email.com">edoardovolley06@gmail.com</a>
