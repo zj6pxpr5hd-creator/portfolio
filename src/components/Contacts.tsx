@@ -13,6 +13,7 @@ function Contacts() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub (opens in a new tab)"
+              title="Visit GitHub profile"
             >
               GitHub
             </a>
@@ -21,6 +22,7 @@ function Contacts() {
               target="_blank"
               rel="noreferrer"
               aria-label="Twitter / X (opens in a new tab)"
+              title="Visit Twitter / X profile"
             >
               Twitter / X
             </a>
@@ -29,10 +31,16 @@ function Contacts() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn (opens in a new tab)"
+              title="Visit LinkedIn profile"
             >
               LinkedIn
             </a>
-            <a href="mailto:example@email.com">edoardovolley06@gmail.com</a>
+            <a
+              href="mailto:edoardovolley06@gmail.com"
+              title="Send email to Edoardo"
+            >
+              edoardovolley06@gmail.com
+            </a>
           </nav>
         </div>
       </section>
