@@ -31,9 +31,10 @@ function ProjectCard({ project }: ProjectCardProps) {
                   href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Open ${project.title} link`}
+                  aria-label={`Open ${project.title} repository (opens in a new tab)`}
+                  title={`Open ${project.title} repository`}
                 >
-                  ↗
+                  <span aria-hidden="true">↗</span>
                 </a>
               )}
             </div>
