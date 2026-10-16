@@ -955,13 +955,56 @@
 	justify-content: space-between;
 	align-items: center;
 }
-.contacts__links a {
-	transition: color 160ms ease;
+.contacts__links a,
+.contacts__email-btn {
+	transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
 }
 
 .contacts__links a:hover,
 .contacts__links a:focus-visible {
 	color: var(--lime);
+}
+
+.contacts__email-wrapper {
+	display: inline-flex;
+	align-items: center;
+}
+
+.contacts__email-btn {
+	background: transparent;
+	border: 1px solid transparent;
+	color: var(--ink);
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	padding: var(--space-xs) var(--space-sm);
+	border-radius: var(--radius-sm);
+}
+
+.contacts__email-btn:hover,
+.contacts__email-btn:focus-visible {
+	color: var(--lime);
+	border-color: color-mix(in srgb, var(--lime) 45%, var(--border));
+	background: color-mix(in srgb, var(--lime) 10%, transparent);
+	outline: none;
+}
+
+.contacts__email-btn--copied {
+	color: var(--lime-soft);
+	border-color: var(--lime);
+	background: color-mix(in srgb, var(--lime) 15%, transparent);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
 }
 
 
