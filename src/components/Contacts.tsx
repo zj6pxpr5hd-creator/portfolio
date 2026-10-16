@@ -1,4 +1,19 @@
+import { useState } from "react";
+
 function Contacts() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText("edoardovolley06@gmail.com");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = "mailto:edoardovolley06@gmail.com";
+    }
+  };
+
   return (
     <>
       <section className="contacts" id="contact" aria-labelledby="contact-title">
@@ -35,12 +50,20 @@ function Contacts() {
             >
               LinkedIn
             </a>
-            <a
-              href="mailto:edoardovolley06@gmail.com"
-              title="Send email to Edoardo"
-            >
-              edoardovolley06@gmail.com
-            </a>
+            <div className="contacts__email-wrapper">
+              <button
+                type="button"
+                className={`contacts__email-btn ${copied ? "contacts__email-btn--copied" : ""}`}
+                onClick={handleCopy}
+                aria-label={copied ? "Email copied to clipboard" : "Copy email address to clipboard"}
+                title="Click to copy email address"
+              >
+                {copied ? "✓ Copied!" : "edoardovolley06@gmail.com"}
+              </button>
+              <span className="sr-only" aria-live="polite">
+                {copied ? "Email address copied to clipboard" : ""}
+              </span>
+            </div>
           </nav>
         </div>
       </section>
@@ -51,7 +74,6 @@ function Contacts() {
           <span aria-hidden="true">•</span>
           <span>Built w/ Curiosity &amp; Passion</span>
         </div>
-        
       </div>
     </>
   );
