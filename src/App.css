@@ -1,3 +1,25 @@
+.skip-link {
+	position: absolute;
+	top: -100px;
+	left: 1rem;
+	z-index: 100;
+	background: var(--lime);
+	color: var(--surface-inset);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	padding: var(--space-sm) var(--space-md);
+	border: 1px solid var(--lime-soft);
+	border-radius: var(--radius-sm);
+	transition: top 160ms ease;
+}
+
+.skip-link:focus {
+	top: 1rem;
+	outline: 2px solid var(--lime-soft);
+	outline-offset: 2px;
+}
+
 .site-shell {
 	min-height: 100vh;
 }

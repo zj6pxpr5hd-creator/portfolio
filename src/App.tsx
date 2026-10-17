@@ -8,8 +8,11 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="site-shell" id="top">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <Header />
-      <main className="site-main site-container">
+      <main id="main-content" tabIndex={-1} className="site-main site-container">
         <Hero />
         <ProjectsSection />
         <Stack />
