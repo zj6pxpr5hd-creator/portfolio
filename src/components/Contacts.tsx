@@ -1,17 +1,42 @@
 import { useState } from "react";
 
+type CopyStatus = "idle" | "copied" | "error";
+
 function Contacts() {
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
 
   const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      await navigator.clipboard.writeText("edoardovolley06@gmail.com");
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText("edoardovolley06@gmail.com");
+        setCopyStatus("copied");
+        setTimeout(() => setCopyStatus("idle"), 2000);
+      } else {
+        window.location.href = "mailto:edoardovolley06@gmail.com";
+      }
     } catch {
-      window.location.href = "mailto:edoardovolley06@gmail.com";
+      setCopyStatus("error");
+      setTimeout(() => setCopyStatus("idle"), 3000);
     }
+  };
+
+  const getButtonText = () => {
+    if (copyStatus === "copied") return "✓ Copied!";
+    if (copyStatus === "error") return "× Error copying";
+    return "edoardovolley06@gmail.com";
+  };
+
+  const getAriaLabel = () => {
+    if (copyStatus === "copied") return "Email address copied to clipboard";
+    if (copyStatus === "error") return "Failed to copy email address";
+    return "Copy email address to clipboard";
+  };
+
+  const getAnnouncementText = () => {
+    if (copyStatus === "copied") return "Email address copied to clipboard";
+    if (copyStatus === "error") return "Failed to copy email address to clipboard";
+    return "";
   };
 
   return (
@@ -53,15 +78,21 @@ function Contacts() {
             <div className="contacts__email-wrapper">
               <button
                 type="button"
-                className={`contacts__email-btn ${copied ? "contacts__email-btn--copied" : ""}`}
+                className={`contacts__email-btn ${
+                  copyStatus === "copied"
+                    ? "contacts__email-btn--copied"
+                    : copyStatus === "error"
+                      ? "contacts__email-btn--error"
+                      : ""
+                }`}
                 onClick={handleCopy}
-                aria-label={copied ? "Email copied to clipboard" : "Copy email address to clipboard"}
+                aria-label={getAriaLabel()}
                 title="Click to copy email address"
               >
-                {copied ? "✓ Copied!" : "edoardovolley06@gmail.com"}
+                {getButtonText()}
               </button>
               <span className="sr-only" aria-live="polite">
-                {copied ? "Email address copied to clipboard" : ""}
+                {getAnnouncementText()}
               </span>
             </div>
           </nav>

@@ -1017,6 +1017,12 @@
 	background: color-mix(in srgb, var(--lime) 15%, transparent);
 }
 
+.contacts__email-btn--error {
+	color: var(--error);
+	border-color: var(--error);
+	background: color-mix(in srgb, var(--error) 15%, transparent);
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;
