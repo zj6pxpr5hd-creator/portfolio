@@ -56,7 +56,7 @@ function Contacts() {
                 className={`contacts__email-btn ${copied ? "contacts__email-btn--copied" : ""}`}
                 onClick={handleCopy}
                 aria-label={copied ? "Email copied to clipboard" : "Copy email address to clipboard"}
-                title="Click to copy email address"
+                title={copied ? "Email copied to clipboard!" : "Click to copy email address"}
               >
                 {copied ? "✓ Copied!" : "edoardovolley06@gmail.com"}
               </button>
