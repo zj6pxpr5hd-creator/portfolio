@@ -874,6 +874,11 @@
 	text-align: right;
 }
 
+.technology-card__code-container {
+	position: relative;
+	margin: var(--space-md) 0;
+}
+
 .technology-card__code {
 	background: var(--surface-inset);
 	border: 1px solid color-mix(in srgb, var(--border) 80%, var(--surface-highest));
@@ -881,11 +886,41 @@
 	font-family: var(--font-mono);
 	font-size: 0.625rem;
 	line-height: 1.5;
-	margin: var(--space-md) 0;
+	margin: 0;
 	min-height: 4.5rem;
 	overflow-x: auto;
 	padding: var(--space-sm);
+	padding-right: 4.25rem;
 	white-space: pre-wrap;
+}
+
+.technology-card__copy-btn {
+	position: absolute;
+	top: 0.375rem;
+	right: 0.375rem;
+	background: color-mix(in srgb, var(--surface) 80%, transparent);
+	border: 1px solid var(--border);
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.5625rem;
+	padding: 0.125rem 0.375rem;
+	cursor: pointer;
+	transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+	border-radius: 2px;
+}
+
+.technology-card__copy-btn:hover,
+.technology-card__copy-btn:focus-visible {
+	color: var(--lime);
+	border-color: color-mix(in srgb, var(--lime) 45%, var(--border));
+	background: var(--surface-high);
+	outline: none;
+}
+
+.technology-card__copy-btn--copied {
+	color: var(--lime-soft);
+	border-color: var(--lime);
+	background: color-mix(in srgb, var(--lime) 15%, var(--surface-inset));
 }
 
 .technology-card p {
