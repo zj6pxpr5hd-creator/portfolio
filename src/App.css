@@ -445,6 +445,33 @@
 	transition: color 160ms ease;
 }
 
+.project-card__title-link {
+	color: inherit;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-xs);
+	text-decoration: none;
+}
+
+.project-card__title-link:hover,
+.project-card__title-link:focus-visible {
+	text-decoration: underline;
+}
+
+.project-card__link-icon {
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.875rem;
+	line-height: 1;
+	transition: color 160ms ease, transform 160ms ease;
+}
+
+.project-card__title-link:hover .project-card__link-icon,
+.project-card__title-link:focus-visible .project-card__link-icon {
+	color: inherit;
+	transform: translate(2px, -2px);
+}
+
 .project-card--lime:hover .project-card__title-row h3,
 .project-card--lime:focus-within .project-card__title-row h3 {
 	color: var(--lime);
@@ -886,6 +913,11 @@
 	overflow-x: auto;
 	padding: var(--space-sm);
 	white-space: pre-wrap;
+}
+
+.technology-card__code:focus-visible {
+	outline: 2px solid var(--lime);
+	outline-offset: 1px;
 }
 
 .technology-card p {
