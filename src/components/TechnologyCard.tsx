@@ -34,7 +34,14 @@ function TechnologyCard({ technology }: TechnologyCardProps) {
           <h3>{technology.name}</h3>
           <span>{technology.category}</span>
         </div>
-        <pre className="technology-card__code"><code>{technology.code}</code></pre>
+        <pre
+          className="technology-card__code"
+          tabIndex={0}
+          role="region"
+          aria-label={`${technology.name} code snippet`}
+        >
+          <code>{technology.code}</code>
+        </pre>
         <p>{technology.description}</p>
       </div>
       <footer className="technology-card__evidence">
