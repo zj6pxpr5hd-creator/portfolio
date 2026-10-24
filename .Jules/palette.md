@@ -9,3 +9,7 @@
 ## 2026-10-14 - Keyboard Scrollable Code Blocks Accessibility
 **Learning:** Scrollable code blocks (`overflow-x: auto`) are non-focusable by default for keyboard users, leaving screen reader and keyboard-only users unable to scroll and inspect truncated code lines.
 **Action:** Add `tabIndex={0}`, `role="region"`, explicit `aria-label="<Name> code snippet"`, and clear `:focus-visible` outline styles to scrollable container elements.
+
+## 2026-10-14 - Card Heading Click Target & Focus Boundary
+**Learning:** Icon-only external links adjacent to prominent card headings create a mismatch between visual cues (heading color changes on hover) and interactive hit areas, frustrating users who attempt to click the title.
+**Action:** Wrap both heading text and icon inside the link element to enlarge the click target size while enforcing high-contrast `:focus-visible` outline bounds.

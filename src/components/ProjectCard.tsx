@@ -24,18 +24,22 @@ function ProjectCard({ project }: ProjectCardProps) {
           </span>
           <div>
             <div className="project-card__title-row">
-              <h3>{project.title}</h3>
-              {project.link && (
+              {project.link ? (
                 <a
-                  className="project-card__link"
+                  className="project-card__title-link"
                   href={project.link}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`Open ${project.title} repository (opens in a new tab)`}
                   title={`Open ${project.title} repository`}
                 >
-                  <span aria-hidden="true">↗</span>
+                  <h3>{project.title}</h3>
+                  <span className="project-card__link-icon" aria-hidden="true">
+                    ↗
+                  </span>
                 </a>
+              ) : (
+                <h3>{project.title}</h3>
               )}
             </div>
             <p>{project.description}</p>
