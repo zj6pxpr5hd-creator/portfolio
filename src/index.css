@@ -207,7 +207,9 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   border-color: var(--primary);
-  outline: none;
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 input::placeholder,

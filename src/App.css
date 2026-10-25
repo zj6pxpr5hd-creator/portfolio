@@ -1028,7 +1028,11 @@
 	color: var(--lime);
 	border-color: color-mix(in srgb, var(--lime) 45%, var(--border));
 	background: color-mix(in srgb, var(--lime) 10%, transparent);
-	outline: none;
+}
+
+.contacts__email-btn:focus-visible {
+	outline: 2px solid var(--lime);
+	outline-offset: 2px;
 }
 
 .contacts__email-btn--copied {
