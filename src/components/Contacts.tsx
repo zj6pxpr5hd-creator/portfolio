@@ -55,10 +55,13 @@ function Contacts() {
                 type="button"
                 className={`contacts__email-btn ${copied ? "contacts__email-btn--copied" : ""}`}
                 onClick={handleCopy}
-                aria-label={copied ? "Email copied to clipboard" : "Copy email address to clipboard"}
-                title={copied ? "Email copied to clipboard!" : "Click to copy email address"}
+                aria-label={copied ? "Email address copied to clipboard" : "Copy email address to clipboard"}
+                title={copied ? "Email address copied to clipboard!" : "Click to copy email address"}
               >
-                {copied ? "✓ Copied!" : "edoardovolley06@gmail.com"}
+                <span className="contacts__email-address">edoardovolley06@gmail.com</span>
+                <span className="contacts__email-badge" aria-hidden="true">
+                  {copied ? "✓ Copied" : "Copy"}
+                </span>
               </button>
               <span className="sr-only" aria-live="polite">
                 {copied ? "Email address copied to clipboard" : ""}
