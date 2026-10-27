@@ -45,8 +45,8 @@ function Hero() {
               0 warnings
             </span>
           </div>
-          <div className="hero__panel-screen" aria-hidden="true">
-            <img src="/profile_pic.jpeg" alt="Developer screen" />
+          <div className="hero__panel-screen">
+            <img src="/profile_pic.jpeg" alt="Edoardo Chessa" />
           </div>
           <div className="hero__panel-footer">
             <span className="mono-label">studying / building in public</span>
