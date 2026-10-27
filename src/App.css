@@ -1021,6 +1021,20 @@
 	font-size: inherit;
 	padding: var(--space-xs) var(--space-sm);
 	border-radius: var(--radius-sm);
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.contacts__email-badge {
+	font-family: var(--font-mono);
+	font-size: 0.625rem;
+	padding: 0.125rem 0.375rem;
+	border-radius: 4px;
+	border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+	color: var(--muted);
+	line-height: 1;
+	transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
 }
 
 .contacts__email-btn:hover,
@@ -1031,10 +1045,23 @@
 	outline: none;
 }
 
+.contacts__email-btn:hover .contacts__email-badge,
+.contacts__email-btn:focus-visible .contacts__email-badge {
+	color: var(--lime);
+	border-color: color-mix(in srgb, var(--lime) 50%, var(--border));
+	background: color-mix(in srgb, var(--lime) 15%, transparent);
+}
+
 .contacts__email-btn--copied {
 	color: var(--lime-soft);
 	border-color: var(--lime);
 	background: color-mix(in srgb, var(--lime) 15%, transparent);
+}
+
+.contacts__email-btn--copied .contacts__email-badge {
+	color: var(--lime-soft);
+	border-color: var(--lime);
+	background: color-mix(in srgb, var(--lime) 20%, transparent);
 }
 
 .sr-only {

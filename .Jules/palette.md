@@ -13,3 +13,7 @@
 ## 2026-10-14 - Card Heading Click Target & Focus Boundary
 **Learning:** Icon-only external links adjacent to prominent card headings create a mismatch between visual cues (heading color changes on hover) and interactive hit areas, frustrating users who attempt to click the title.
 **Action:** Wrap both heading text and icon inside the link element to enlarge the click target size while enforcing high-contrast `:focus-visible` outline bounds.
+
+## 2026-10-14 - Layout-Stable Copy Action Feedback
+**Learning:** Replacing primary button label text (e.g., an email address) with temporary feedback text (e.g. "✓ Copied!") hides critical context from the user and causes layout jump in flexbox containers due to character length shifts.
+**Action:** Retain the full primary label text and append a layout-stable action/status badge (e.g., `Copy` -> `✓ Copied`) to give clear visual affordance and feedback without layout shift.
