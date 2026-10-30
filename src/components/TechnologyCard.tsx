@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export type Technology = {
   name: string;
   category: string;
@@ -15,6 +17,18 @@ type TechnologyCardProps = {
 };
 
 function TechnologyCard({ technology }: TechnologyCardProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(technology.code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback if clipboard API is unavailable
+    }
+  };
+
   return (
     <article
       className={`technology-card technology-card--${technology.accent}${
@@ -34,14 +48,31 @@ function TechnologyCard({ technology }: TechnologyCardProps) {
           <h3>{technology.name}</h3>
           <span>{technology.category}</span>
         </div>
-        <pre
-          className="technology-card__code"
-          tabIndex={0}
-          role="region"
-          aria-label={`${technology.name} code snippet`}
-        >
-          <code>{technology.code}</code>
-        </pre>
+        <div className="technology-card__code-block">
+          <pre
+            className="technology-card__code"
+            tabIndex={0}
+            role="region"
+            aria-label={`${technology.name} code snippet`}
+          >
+            <code>{technology.code}</code>
+          </pre>
+          <button
+            type="button"
+            className={`technology-card__copy-btn ${
+              copied ? "technology-card__copy-btn--copied" : ""
+            }`}
+            onClick={handleCopy}
+            aria-label={
+              copied
+                ? `Copied ${technology.name} code snippet`
+                : `Copy ${technology.name} code snippet`
+            }
+            title={copied ? "Code snippet copied!" : "Copy code snippet"}
+          >
+            {copied ? "✓ Copied" : "Copy"}
+          </button>
+        </div>
         <p>{technology.description}</p>
       </div>
       <footer className="technology-card__evidence">

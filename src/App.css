@@ -888,6 +888,11 @@
 	text-align: right;
 }
 
+.technology-card__code-block {
+	position: relative;
+	margin: var(--space-md) 0;
+}
+
 .technology-card__code {
 	background: var(--surface-inset);
 	border: 1px solid color-mix(in srgb, var(--border) 80%, var(--surface-highest));
@@ -895,10 +900,11 @@
 	font-family: var(--font-mono);
 	font-size: 0.625rem;
 	line-height: 1.5;
-	margin: var(--space-md) 0;
+	margin: 0;
 	min-height: 4.5rem;
 	overflow-x: auto;
 	padding: var(--space-sm);
+	padding-right: 4.5rem;
 	white-space: pre-wrap;
 }
 
@@ -906,6 +912,39 @@
 	outline: 2px solid var(--lime);
 	outline-offset: 2px;
 	border-radius: 2px;
+}
+
+.technology-card__copy-btn {
+	position: absolute;
+	top: var(--space-xs);
+	right: var(--space-xs);
+	background: var(--surface-high);
+	border: 1px solid var(--border);
+	color: var(--muted);
+	cursor: pointer;
+	font-family: var(--font-mono);
+	font-size: 0.625rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: var(--radius-sm);
+	transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.technology-card__copy-btn:hover,
+.technology-card__copy-btn:focus-visible {
+	color: var(--lime);
+	border-color: color-mix(in srgb, var(--lime) 50%, var(--border));
+	background: color-mix(in srgb, var(--lime) 10%, var(--surface-high));
+}
+
+.technology-card__copy-btn:focus-visible {
+	outline: 2px solid var(--lime);
+	outline-offset: 2px;
+}
+
+.technology-card__copy-btn--copied {
+	color: var(--lime-soft);
+	border-color: var(--lime);
+	background: color-mix(in srgb, var(--lime) 15%, var(--surface-high));
 }
 
 .technology-card p {
