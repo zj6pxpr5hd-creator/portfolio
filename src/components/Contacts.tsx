@@ -77,6 +77,13 @@ function Contacts() {
           <span aria-hidden="true">•</span>
           <span>Built w/ Curiosity &amp; Passion</span>
         </div>
+        <a
+          href="#top"
+          className="site-footer__back-to-top"
+          aria-label="Back to top of page"
+        >
+          <span aria-hidden="true">↑</span> Back to top
+        </a>
       </div>
     </>
   );

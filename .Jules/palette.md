@@ -17,3 +17,7 @@
 ## 2026-10-14 - Layout-Stable Copy Action Feedback
 **Learning:** Replacing primary button label text (e.g., an email address) with temporary feedback text (e.g. "✓ Copied!") hides critical context from the user and causes layout jump in flexbox containers due to character length shifts.
 **Action:** Retain the full primary label text and append a layout-stable action/status badge (e.g., `Copy` -> `✓ Copied`) to give clear visual affordance and feedback without layout shift.
+
+## 2026-10-31 - Footer Back-To-Top Return Affordance
+**Learning:** Long-scroll single-page portfolio layouts force keyboard and mobile users who reach the bottom to manually traverse the entire document height in reverse to re-access top navigation or inspect initial hero context.
+**Action:** Provide an explicit, semantic `<a href="#top">` return link in the footer metadata styled with the component's monospaced badge pattern, pairing an arrow indicator with an explicit `aria-label="Back to top of page"`.
