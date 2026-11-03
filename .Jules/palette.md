@@ -21,3 +21,7 @@
 ## 2026-10-31 - Footer Back-To-Top Return Affordance
 **Learning:** Long-scroll single-page portfolio layouts force keyboard and mobile users who reach the bottom to manually traverse the entire document height in reverse to re-access top navigation or inspect initial hero context.
 **Action:** Provide an explicit, semantic `<a href="#top">` return link in the footer metadata styled with the component's monospaced badge pattern, pairing an arrow indicator with an explicit `aria-label="Back to top of page"`.
+
+## 2026-11-01 - Contextual Status Illustration Semantics and Responsive Containment
+**Learning:** Decorative or mood-setting illustrations used within developer status panels are often incorrectly given the author's name as fallback alt text (`alt="Author Name"`), which misleads screen reader users into expecting a headshot while failing to convey the thematic story (e.g. coding late at night). Furthermore, square image assets placed in fixed-height retro screens without explicit containment (`object-fit: cover`) produce accidental visual clipping.
+**Action:** Provide concrete descriptive alt text articulating the illustration scene, and pair fixed-aspect screen viewports with `width: 100%`, `height: 100%`, `object-fit: cover`, and `object-position: center`.

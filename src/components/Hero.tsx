@@ -46,7 +46,10 @@ function Hero() {
             </span>
           </div>
           <div className="hero__panel-screen">
-            <img src="/profile_pic.jpeg" alt="Edoardo Chessa" />
+            <img
+              src="/profile_pic.jpeg"
+              alt="Pixel art illustration of a developer asleep at a desk surrounded by dual glowing code monitors"
+            />
           </div>
           <div className="hero__panel-footer">
             <span className="mono-label">studying / building in public</span>
