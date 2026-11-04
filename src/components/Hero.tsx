@@ -46,7 +46,14 @@ function Hero() {
             </span>
           </div>
           <div className="hero__panel-screen">
-            <img src="/profile_pic.jpeg" alt="Edoardo Chessa" />
+            <img
+              src="/profile_pic.jpeg"
+              alt="Edoardo Chessa"
+              width={736}
+              height={736}
+              loading="eager"
+              decoding="async"
+            />
           </div>
           <div className="hero__panel-footer">
             <span className="mono-label">studying / building in public</span>
