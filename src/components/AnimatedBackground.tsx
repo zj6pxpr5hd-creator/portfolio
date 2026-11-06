@@ -63,6 +63,7 @@ export default function AnimatedBackground({ children }: { children: React.React
       bg.addEventListener('pointermove', updateTarget);
       bg.addEventListener('pointerenter', onEnter);
       bg.addEventListener('pointerleave', onLeave);
+      if (bg.matches(':hover')) bg.classList.add('active');
     };
 
     const onMotionPreferenceChange = (e: MediaQueryListEvent) => {
