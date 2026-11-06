@@ -21,3 +21,7 @@
 ## 2026-10-31 - Footer Back-To-Top Return Affordance
 **Learning:** Long-scroll single-page portfolio layouts force keyboard and mobile users who reach the bottom to manually traverse the entire document height in reverse to re-access top navigation or inspect initial hero context.
 **Action:** Provide an explicit, semantic `<a href="#top">` return link in the footer metadata styled with the component's monospaced badge pattern, pairing an arrow indicator with an explicit `aria-label="Back to top of page"`.
+
+## 2026-11-06 - Animated Background Continuous rAF and prefers-reduced-motion
+**Learning:** Canvas or DOM-based pointer tracking animations that run continuous `requestAnimationFrame` loops trigger vestibular discomfort for users who prefer reduced motion, while needlessly consuming battery and GPU cycles.
+**Action:** Gate continuous pointer event listeners and animation frames behind `window.matchMedia('(prefers-reduced-motion: reduce)')` (including dynamic change listeners) and hide glowing elements via `@media (prefers-reduced-motion: reduce)`.

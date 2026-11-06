@@ -30,3 +30,9 @@ padding: var(--space-lg);
 .bg.active .light {
   opacity: 1;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .light {
+    display: none;
+  }
+}
