@@ -922,6 +922,11 @@
 	text-align: right;
 }
 
+.technology-card__code-wrapper {
+	position: relative;
+	margin: var(--space-md) 0;
+}
+
 .technology-card__code {
 	background: var(--surface-inset);
 	border: 1px solid color-mix(in srgb, var(--border) 80%, var(--surface-highest));
@@ -929,11 +934,46 @@
 	font-family: var(--font-mono);
 	font-size: 0.625rem;
 	line-height: 1.5;
-	margin: var(--space-md) 0;
+	margin: 0;
 	min-height: 4.5rem;
 	overflow-x: auto;
 	padding: var(--space-sm);
+	padding-top: calc(var(--space-sm) + 1.25rem);
 	white-space: pre-wrap;
+}
+
+.technology-card__copy-btn {
+	position: absolute;
+	top: 0.35rem;
+	right: 0.35rem;
+	background: var(--surface-highest);
+	border: 1px solid var(--border);
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 0.5625rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	padding: 0.15rem 0.4rem;
+	border-radius: 0;
+	cursor: pointer;
+	transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.technology-card__copy-btn:hover {
+	background: var(--surface-middle);
+	color: var(--foreground);
+	border-color: var(--muted);
+}
+
+.technology-card__copy-btn:focus-visible {
+	outline: 2px solid var(--lime);
+	outline-offset: 1px;
+}
+
+.technology-card__copy-btn--copied {
+	color: var(--lime-soft);
+	border-color: var(--lime);
+	background: color-mix(in srgb, var(--lime) 15%, transparent);
 }
 
 .technology-card__code:focus-visible {
