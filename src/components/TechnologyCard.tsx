@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export type Technology = {
   name: string;
   category: string;
@@ -15,6 +17,18 @@ type TechnologyCardProps = {
 };
 
 function TechnologyCard({ technology }: TechnologyCardProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(technology.code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard write rejected/unsupported
+    }
+  };
+
   return (
     <article
       className={`technology-card technology-card--${technology.accent}${
@@ -25,9 +39,30 @@ function TechnologyCard({ technology }: TechnologyCardProps) {
         <span className="technology-card__path">
           {technology.path}
         </span>
-        <span className="technology-card__category">
-          {technology.category}
-        </span>
+        <div className="technology-card__actions">
+          <button
+            type="button"
+            className={`technology-card__copy-btn ${
+              copied ? "technology-card__copy-btn--copied" : ""
+            }`}
+            onClick={handleCopy}
+            aria-label={
+              copied
+                ? `Copied ${technology.name} code snippet`
+                : `Copy ${technology.name} code snippet`
+            }
+            title={copied ? "Code snippet copied!" : "Copy code snippet"}
+          >
+            <span aria-hidden="true">{copied ? "✓" : "❐"}</span>
+            <span>{copied ? "Copied" : "Copy"}</span>
+          </button>
+          <span className="sr-only" aria-live="polite">
+            {copied ? `${technology.name} code snippet copied to clipboard` : ""}
+          </span>
+          <span className="technology-card__category">
+            {technology.category}
+          </span>
+        </div>
       </div>
       <div className="technology-card__body">
         <div className="technology-card__title-row">
