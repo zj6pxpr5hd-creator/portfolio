@@ -1,14 +1,50 @@
+import { useEffect, useState } from "react";
 import CommandModule from "./CommandModule";
 import AnimatedBackground from "./AnimatedBackground";
 
 function Hero() {
+  const [solvedCount, setSolvedCount] = useState<number | null>(null);
+  const [statsLoaded, setStatsLoaded] = useState(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadSolvedCount() {
+      try {
+        const response = await fetch("/api/leetcode", { signal: controller.signal });
+        if (!response.ok) throw new Error("LeetCode statistics request failed");
+
+        const data: unknown = await response.json();
+        if (
+          typeof data !== "object" ||
+          data === null ||
+          !("solvedCount" in data) ||
+          typeof data.solvedCount !== "number"
+        ) {
+          throw new Error("LeetCode statistics response is invalid");
+        }
+
+        setSolvedCount(data.solvedCount);
+      } catch (error) {
+        if (!controller.signal.aborted) {
+          console.error("Unable to load LeetCode statistics:", error);
+        }
+      } finally {
+        if (!controller.signal.aborted) setStatsLoaded(true);
+      }
+    }
+
+    void loadSolvedCount();
+
+    return () => controller.abort();
+  }, []);
+
   return (
     <section className="hero" aria-labelledby="hero-title">
       <AnimatedBackground>
       <CommandModule />
       <div className="hero__badges" aria-label="Current profile">
         <span className="hero__badge--highlight">SWE Year 2 / Tech · Building Daily</span>
-        <span>Technology enthusiast</span>
         <span className="hero__badge--accent">💻 Looking for SWE internships</span>
       </div>
 
@@ -27,8 +63,8 @@ function Hero() {
               <strong>Systems + full-stack</strong>
             </div>
             <div className="hero__metric">
-              <span className="mono-label">Mode</span>
-              <strong>Learn by doing</strong>
+              <span className="mono-label">LeetCode Problems Solved</span>
+              <strong>{solvedCount ?? (statsLoaded ? "Unavailable" : "Loading…")}</strong>
             </div>
             <div className="hero__metric">
               <span className="mono-label">GPA</span>
@@ -54,7 +90,6 @@ function Hero() {
             />
           </div>
           <div className="hero__panel-footer">
-            <span className="mono-label">studying / building in public</span>
             <code>const next = ship(idea);</code>
           </div>
         </div>
