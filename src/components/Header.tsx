@@ -68,12 +68,8 @@ function Header() {
       </nav>
 
       <div className="site-header__actions">
-        <a
-          className="site-header__cta"
-          href="/Edoardo_Chessa_CV.pdf"
-          download
-        >
-          Download CV
+        <a className="site-header__cta" href="mailto:edoardovolley06@gmail.com">
+          Email me
         </a>
       </div>
     </header>
