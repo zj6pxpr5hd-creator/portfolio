@@ -68,11 +68,12 @@ function Header() {
       </nav>
 
       <div className="site-header__actions">
-        <span className="site-header__availability">
-          ONLINE
-        </span>
-        <a className="site-header__cta" href="#contact">
-          Let&apos;s Talk Code
+        <a
+          className="site-header__cta"
+          href="/Edoardo_Chessa_CV.pdf"
+          download
+        >
+          Download CV
         </a>
       </div>
     </header>

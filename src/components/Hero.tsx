@@ -43,9 +43,9 @@ function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <AnimatedBackground>
       <CommandModule />
-      <div className="hero__badges" aria-label="Current profile">
+      <div className="hero__badges" role="group" aria-label="Profile highlights">
+        <span className="hero__badge--accent">Looking for SWE internships</span>
         <span className="hero__badge--highlight">SWE Year 2 / Tech · Building Daily</span>
-        <span className="hero__badge--accent">💻 Looking for SWE internships</span>
       </div>
 
       <div className="hero__grid">
@@ -56,6 +56,34 @@ function Hero() {
             POLIMI student obsessed with shipping real things while maintaining a stellar GPA. 
             I love to build and break things, and I'm always looking for the next challenge.
           </p>
+
+          <nav className="hero__links" aria-label="Profile links">
+            <a
+              className="hero__link"
+              href="https://github.com/zj6pxpr5hd-creator"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub (opens in a new tab)"
+            >
+              GitHub
+            </a>
+            <a
+              className="hero__link"
+              href="https://www.linkedin.com/in/edoardo-chessa-65487a442"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn (opens in a new tab)"
+            >
+              LinkedIn
+            </a>
+            <a
+              className="hero__link hero__link--cv"
+              href="/Edoardo_Chessa_CV.pdf"
+              download
+            >
+              Download CV
+            </a>
+          </nav>
 
           <div className="hero__metrics" aria-label="Current focus">
             <div className="hero__metric">
