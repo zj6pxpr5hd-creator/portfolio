@@ -41,8 +41,6 @@ function Hero() {
           <div className="hero__panel-header">
             <span className="mono-label">Status</span>
             <span className="hero__panel-status">
-              <span aria-hidden="true" />
-              0 warnings
             </span>
           </div>
           <div className="hero__panel-screen">

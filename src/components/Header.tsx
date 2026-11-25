@@ -69,7 +69,6 @@ function Header() {
 
       <div className="site-header__actions">
         <span className="site-header__availability">
-          <span className="site-header__availability-dot" aria-hidden="true" />
           ONLINE
         </span>
         <a className="site-header__cta" href="#contact">
