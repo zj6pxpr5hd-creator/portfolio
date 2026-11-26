@@ -35,13 +35,14 @@ function Contacts() {
             >
               LinkedIn
             </a>
+            <a
+              className="contacts__email-cta"
+              href="mailto:edoardovolley06@gmail.com"
+            >
+              Email me
+            </a>
           </nav>
-          <a
-            className="contacts__email-cta"
-            href="mailto:edoardovolley06@gmail.com"
-          >
-            Email me
-          </a>
+          
         </div>
       </section>
 

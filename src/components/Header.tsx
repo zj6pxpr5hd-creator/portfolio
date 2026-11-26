@@ -69,7 +69,7 @@ function Header() {
 
       <div className="site-header__actions">
         <a className="site-header__cta" href="mailto:edoardovolley06@gmail.com">
-          Email me
+          Email Me
         </a>
       </div>
     </header>

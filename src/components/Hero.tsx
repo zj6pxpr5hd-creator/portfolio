@@ -47,7 +47,6 @@ function Hero() {
       <div className="hero__grid">
         <div className="hero__copy">
           <span className="hero__status">
-            <span className="hero__status-dot" aria-hidden="true" />
             Open to internships · Summer 2027
           </span>
           <h1 id="hero-title">Edoardo Chessa</h1>
@@ -57,7 +56,9 @@ function Hero() {
           </p>
 
           <div className="hero__actions" aria-label="Contact and resume">
-
+            {/*<a className="hero__action--primary" href="mailto:edoardovolley06@gmail.com">
+              Email me
+            </a>*/}
             <a
               className="hero__action--secondary"
               href="/Edoardo_Chessa_CV.pdf"
@@ -83,10 +84,7 @@ function Hero() {
                 LinkedIn
               </a>
             </nav>
-
           </div>
-
-          
 
           <div className="hero__metrics" aria-label="Current focus">
             <div className="hero__metric">
@@ -101,20 +99,6 @@ function Hero() {
               <span className="mono-label">GPA</span>
               <strong>29.83/30</strong>
             </div>
-          </div>
-        </div>
-
-        <div className="hero__panel" aria-label="Developer status">
-          <div className="hero__panel-header">
-        </div>
-          <div className="hero__panel-screen">
-            <video
-              src="/Aurora_video.mp4"
-              poster="/aurora-poster.png"
-              autoPlay muted loop playsInline
-              className="video_display"
-              aria-label="Demo of Aurora answering a question using stored memory"
-            />
           </div>
         </div>
       </div>
