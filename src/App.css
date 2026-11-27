@@ -821,7 +821,7 @@
 }
 
 .demo-video__media {
-	aspect-ratio: 16 / 9;
+	aspect-ratio: 1.95 / 1;
 	height: auto;
 	object-fit: cover;
 	width: 100%;
