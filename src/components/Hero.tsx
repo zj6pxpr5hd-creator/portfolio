@@ -52,7 +52,7 @@ function Hero() {
           <h1 id="hero-title">Edoardo Chessa</h1>
           <p className="hero__role">SWE Student at Politecnico di Milano</p>
           <p className="hero__summary">
-            Software Engineering student at Politecnico di Milano. I build full-stack apps and systems tools, most recently Aurora, an AI assistant with persistent memory (React, Express, Gemini API, SQLite). Looking for a summer 2027 internship in backend or full-stack development.
+            I build full-stack apps and systems tools, most recently Aurora, an AI assistant with persistent memory (React, Express, Gemini API, SQLite). Looking for a summer 2027 internship in backend or full-stack development.
           </p>
 
           <div className="hero__actions" aria-label="Contact and resume">

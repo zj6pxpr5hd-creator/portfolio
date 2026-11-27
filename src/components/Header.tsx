@@ -46,7 +46,7 @@ function Header() {
         <a className="site-header__brand" href="#top">
           <span className="site-header__brand-name">Edoardo Chessa</span>
           <span className="site-header__subtitle">
-            SWE Undergrad · Building from scratch
+            SWE Undergrad
           </span>
         </a>
       </div>
