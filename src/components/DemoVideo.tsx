@@ -14,7 +14,7 @@ function DemoVideo() {
           </div>
           <video
             className="demo-video__media"
-            src="/Aurora_video.mp4"
+            src="/AURORA-demo.mp4"
             poster="/aurora-poster.jpg"
             autoPlay
             muted
