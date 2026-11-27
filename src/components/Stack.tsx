@@ -113,7 +113,7 @@ function Stack() {
           <h2 id="stack-title">Technologies I Study &amp; Build With</h2>
         </div>
         <span className="section-heading__aside mono-label">
-          Systems primitives · annotated
+          Full Stack
         </span>
       </header>
       <div className="technology-grid">

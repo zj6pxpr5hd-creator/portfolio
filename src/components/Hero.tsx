@@ -43,24 +43,53 @@ function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <AnimatedBackground>
       <CommandModule />
-      <div className="hero__badges" aria-label="Current profile">
-        <span className="hero__badge--highlight">SWE Year 2 / Tech · Building Daily</span>
-        <span className="hero__badge--accent">💻 Looking for SWE internships</span>
-      </div>
 
       <div className="hero__grid">
         <div className="hero__copy">
+          <span className="hero__status">
+            Open to internships · Summer 2027
+          </span>
           <h1 id="hero-title">Edoardo Chessa</h1>
-          <p className="hero__role">SWE Student at Politecnico di Milano &amp; Serial Builder</p>
+          <p className="hero__role">SWE Student at Politecnico di Milano</p>
           <p className="hero__summary">
-            POLIMI student obsessed with shipping real things while maintaining a stellar GPA. 
-            I love to build and break things, and I'm always looking for the next challenge.
+            I build full-stack apps and systems tools, most recently Aurora, an AI assistant with persistent memory (React, Express, Gemini API, SQLite). Looking for a summer 2027 internship in backend or full-stack development.
           </p>
+
+          <div className="hero__actions" aria-label="Contact and resume">
+            {/*<a className="hero__action--primary" href="mailto:edoardovolley06@gmail.com">
+              Email me
+            </a>*/}
+            <a
+              className="hero__action--secondary"
+              href="/Edoardo_Chessa_CV.pdf"
+              download
+            >
+              Download CV
+            </a>
+            <nav className="hero__links" aria-label="Social links">
+              <a
+                href="https://github.com/zj6pxpr5hd-creator"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub (opens in a new tab)"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/edoardo-chessa-65487a442"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn (opens in a new tab)"
+              >
+                LinkedIn
+              </a>
+            </nav>
+          </div>
 
           <div className="hero__metrics" aria-label="Current focus">
             <div className="hero__metric">
               <span className="mono-label">Focus</span>
-              <strong>Systems + full-stack</strong>
+              <strong>Full-stack + Backend</strong>
             </div>
             <div className="hero__metric">
               <span className="mono-label">LeetCode Problems Solved</span>
@@ -70,27 +99,6 @@ function Hero() {
               <span className="mono-label">GPA</span>
               <strong>29.83/30</strong>
             </div>
-          </div>
-        </div>
-
-        <div className="hero__panel" aria-label="Developer status">
-          <div className="hero__panel-header">
-            <span className="mono-label">Status</span>
-            <span className="hero__panel-status">
-            </span>
-          </div>
-          <div className="hero__panel-screen">
-            <img
-              src="/profile_pic.jpeg"
-              alt="Edoardo Chessa"
-              width={736}
-              height={736}
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-          <div className="hero__panel-footer">
-            <code>const next = ship(idea);</code>
           </div>
         </div>
       </div>

@@ -46,7 +46,7 @@ function Header() {
         <a className="site-header__brand" href="#top">
           <span className="site-header__brand-name">Edoardo Chessa</span>
           <span className="site-header__subtitle">
-            SWE Undergrad · Building from scratch
+            SWE Undergrad
           </span>
         </a>
       </div>
@@ -68,11 +68,8 @@ function Header() {
       </nav>
 
       <div className="site-header__actions">
-        <span className="site-header__availability">
-          ONLINE
-        </span>
-        <a className="site-header__cta" href="#contact">
-          Let&apos;s Talk Code
+        <a className="site-header__cta" href="mailto:edoardovolley06@gmail.com">
+          Email Me
         </a>
       </div>
     </header>

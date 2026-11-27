@@ -5,7 +5,7 @@
   --surface: #121418;
   --surface-inset: #0b0c0f;
   --ink: #e4e7ec;
-  --muted: #9ba1ad;
+  --muted: #b7bdc8;
   --border: #202530;
   --lime: #34d399;
   --lime-soft: #6ee7b7;
@@ -41,6 +41,7 @@
   --gutter-mobile: 1rem;
   --margin: 3rem;
   --margin-mobile: 1.25rem;
+  --content-max: 820px;
 
   --radius-sm: 1rem;
   --radius: 1rem;
@@ -120,6 +121,11 @@ svg {
   max-width: 100%;
 }
 
+video {
+  display: block;
+  max-width: 100%;
+}
+
 #root {
   min-height: 100vh;
 }
@@ -179,7 +185,7 @@ pre,
 }
 
 .mono-label {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   line-height: 0.875rem;
